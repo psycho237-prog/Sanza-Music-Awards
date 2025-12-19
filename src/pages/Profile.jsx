@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import Button from '../components/ui/Button';
 import { ChevronLeft, Share2, Play, Pause, Heart, Check, Star, Music, Award } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { nominees } from '../data/mockData';
+import { useVotes } from '../context/VoteContext';
 import VoteModal from '../components/VoteModal';
 
 // Local nominees removed in favor of centralized mockData.js
 
 const Profile = () => {
+    const { nominees } = useVotes();
     const [isVoteModalOpen, setIsVoteModalOpen] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
     const [isBioExpanded, setIsBioExpanded] = useState(false);

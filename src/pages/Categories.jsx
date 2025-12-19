@@ -4,12 +4,13 @@ import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { Mic2, Users, Music, Video, Star, Sparkles, ChevronLeft, Search, Heart, Disc, Radio, Zap, Trophy } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { categories } from '../data/mockData';
+import { useVotes } from '../context/VoteContext';
 import SearchOverlay from '../components/SearchOverlay';
 
 // Local categories removed in favor of centralized mockData.js
 
 const Categories = () => {
+    const { categories } = useVotes();
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [showAll, setShowAll] = useState(false);
 

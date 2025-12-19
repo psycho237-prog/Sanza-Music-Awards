@@ -10,7 +10,7 @@ export const categories = [
         id: 2,
         title: 'Best Male Vocalist',
         nominees: '8 Nominees',
-        image: 'https://images.unsplash.com/photo-1516280440614-6697288d5d38?q=80&w=1000&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1000&auto=format&fit=crop'
     },
     {
         id: 3,

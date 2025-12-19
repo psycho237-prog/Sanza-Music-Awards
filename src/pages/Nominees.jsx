@@ -5,11 +5,12 @@ import Button from '../components/ui/Button';
 import { ChevronLeft, Star, Mic2, Share2, Check, LayoutGrid, User } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import VoteModal from '../components/VoteModal';
-import { nominees as allNominees, categories } from '../data/mockData';
+import { useVotes } from '../context/VoteContext';
 
 // Local nominees removed in favor of centralized mockData.js
 
 const Nominees = () => {
+    const { nominees: allNominees, categories } = useVotes();
     const [activeTab, setActiveTab] = useState('All');
     const [isVoteModalOpen, setIsVoteModalOpen] = useState(false);
     const [selectedNominee, setSelectedNominee] = useState(null);

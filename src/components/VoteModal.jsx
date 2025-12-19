@@ -3,13 +3,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Share2, Minus, Plus, Lock, Smartphone, CreditCard, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button';
+import { useVotes } from '../context/VoteContext';
 
 const VoteModal = ({ isOpen, onClose, nominee }) => {
     const [voteCount, setVoteCount] = useState(1);
     const [paymentMethod, setPaymentMethod] = useState('MOMO'); // 'MOMO' or 'OM'
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isCopied, setIsCopied] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const { incrementVote } = useVotes();
+
+    // Payment API Configuration (Future Integration)
+    const PAYMENT_CONFIG = {
+        MTN_MOMO: {
+            apiKey: '', // Add MTN API Key here
+            merchantId: '',
+            environment: 'sandbox' // or 'production'
+        },
+        ORANGE_MONEY: {
+            apiKey: '', // Add Orange Money API Key here
+            merchantId: '',
+            environment: 'sandbox'
+        }
+    };
 
     const pricePerVote = 105;
     const totalPrice = voteCount * pricePerVote;
@@ -33,7 +50,35 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
     const handleClose = () => {
         setVoteCount(1);
         setPhoneNumber('');
+        setIsLoading(false);
         onClose();
+    };
+
+    const processPayment = async (method, phone, amount) => {
+        setIsLoading(true);
+        console.log(`Processing ${method} payment for ${phone} - Amount: ${amount} XAF`);
+
+        try {
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            if (method === 'MOMO') {
+                // TODO: Integrate MTN Mobile Money CM API
+                // Example: const response = await mtnApi.requestToPay({ phone, amount, ...PAYMENT_CONFIG.MTN_MOMO });
+                console.log('MTN MOMO API Call placeholder');
+            } else if (method === 'OM') {
+                // TODO: Integrate Orange Money CM API
+                // Example: const response = await orangeApi.payment({ phone, amount, ...PAYMENT_CONFIG.ORANGE_MONEY });
+                console.log('Orange Money API Call placeholder');
+            }
+
+            return { success: true };
+        } catch (error) {
+            console.error('Payment failed:', error);
+            return { success: false, error: error.message };
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     if (!isOpen || !nominee) return null;
@@ -183,19 +228,33 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
 
                             {/* Submit Button */}
                             <Button
-                                className="w-full py-4 text-sm font-bold rounded-2xl shadow-lg shadow-secondary/20 mb-4"
-                                onClick={() => {
-                                    handleClose();
-                                    navigate('/vote-success');
+                                className="w-full py-4 text-sm font-bold rounded-2xl shadow-lg shadow-secondary/20 mb-4 flex items-center justify-center gap-2"
+                                disabled={isLoading || phoneNumber.length < 9}
+                                onClick={async () => {
+                                    const result = await processPayment(paymentMethod, phoneNumber, totalPrice);
+                                    if (result.success) {
+                                        incrementVote(nominee.id, voteCount);
+                                        handleClose();
+                                        navigate('/vote-success');
+                                    } else {
+                                        alert('Payment failed. Please try again.');
+                                    }
                                 }}
                             >
-                                VOTE NOW • {totalPrice} XAF
+                                {isLoading ? (
+                                    <>
+                                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                        PROCESSING...
+                                    </>
+                                ) : (
+                                    `VOTE NOW • ${totalPrice} XAF`
+                                )}
                             </Button>
 
                             <div className="flex items-center justify-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest">
                                 <Lock size={12} /> Secure Payment
                             </div>
-                        </div>}
+                        </div>
                     </motion.div>
                 </div>
             )}

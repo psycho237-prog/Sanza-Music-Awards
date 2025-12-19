@@ -9,6 +9,7 @@ import Profile from './pages/Profile';
 import Results from './pages/Results';
 import VoteSuccess from './pages/VoteSuccess';
 import { AnimatePresence } from 'framer-motion';
+import { VoteProvider } from './context/VoteContext';
 
 function AnimatedRoutes() {
     const location = useLocation();
@@ -33,9 +34,11 @@ function AnimatedRoutes() {
 function App() {
     return (
         <Router>
-            <LayoutProvider>
-                <AnimatedRoutes />
-            </LayoutProvider>
+            <VoteProvider>
+                <LayoutProvider>
+                    <AnimatedRoutes />
+                </LayoutProvider>
+            </VoteProvider>
         </Router>
     );
 }
