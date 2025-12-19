@@ -86,11 +86,11 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                 >
                                     {isCopied ? (
                                         <>
-                                            <Check size={12} /> Lien Copié !
+                                            <Check size={12} /> Link Copied!
                                         </>
                                     ) : (
                                         <>
-                                            <Share2 size={12} /> Partager le profil
+                                            <Share2 size={12} /> Share profile
                                         </>
                                     )}
                                 </Button>
@@ -98,7 +98,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
 
                             {/* Vote Counter */}
                             <div className="bg-white/5 rounded-3xl p-6 mb-6 border border-white/5">
-                                <p className="text-center text-gray-500 text-[10px] mb-4 uppercase tracking-widest font-bold">Nombre de Votes</p>
+                                <p className="text-center text-gray-500 text-[10px] mb-4 uppercase tracking-widest font-bold">Number of Votes</p>
                                 <div className="flex items-center justify-center gap-8">
                                     <button
                                         onClick={() => handleVoteChange(-1)}
@@ -136,7 +136,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
 
                             {/* Payment Methods */}
                             <div className="space-y-4 mb-8">
-                                <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-4">Mode de Paiement</p>
+                                <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-4">Payment Method</p>
                                 <div className="grid grid-cols-2 gap-4">
                                     <button
                                         onClick={() => setPaymentMethod('MOMO')}
@@ -146,7 +146,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                             }`}
                                     >
                                         <Smartphone size={20} className={paymentMethod === 'MOMO' ? 'text-secondary' : 'text-gray-400'} />
-                                        <span className="text-[10px] font-bold uppercase">Mobile Money</span>
+                                        <span translate="no" className="text-[10px] font-bold uppercase">Mobile Money</span>
                                     </button>
                                     <button
                                         onClick={() => setPaymentMethod('OM')}
@@ -156,7 +156,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                             }`}
                                     >
                                         <CreditCard size={20} className={paymentMethod === 'OM' ? 'text-secondary' : 'text-gray-400'} />
-                                        <span className="text-[10px] font-bold uppercase">Orange Money</span>
+                                        <span translate="no" className="text-[10px] font-bold uppercase">Orange Money</span>
                                     </button>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-sm">+237</span>
                                     <input
                                         type="tel"
-                                        placeholder="Numéro de téléphone"
+                                        placeholder="Phone number"
                                         value={phoneNumber}
                                         maxLength={9}
                                         onChange={(e) => {
@@ -189,11 +189,11 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                     navigate('/vote-success');
                                 }}
                             >
-                                VOTER MAINTENANT • {totalPrice} XAF
+                                VOTE NOW • {totalPrice} XAF
                             </Button>
 
                             <div className="flex items-center justify-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest">
-                                <Lock size={12} /> Paiement Sécurisé
+                                <Lock size={12} /> Secure Payment
                             </div>
                         </div>}
                     </motion.div>
