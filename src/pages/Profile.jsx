@@ -75,6 +75,8 @@ const nominees = [
 const Profile = () => {
     const [isVoteModalOpen, setIsVoteModalOpen] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
+    const [isBioExpanded, setIsBioExpanded] = useState(false);
+    const [showAllHits, setShowAllHits] = useState(false);
     const [searchParams] = useSearchParams();
     const nomineeId = searchParams.get('nomineeId');
     const nominee = nominees.find(n => n.id === parseInt(nomineeId)) || nominees[0];
@@ -175,8 +177,13 @@ const Profile = () => {
                     <div className="mb-12">
                         <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4">Biography</h3>
                         <p className="text-sm text-gray-400 leading-relaxed font-medium">
-                            {nominee.bio}
-                            <span className="text-secondary ml-2 font-bold cursor-pointer hover:underline">Read more</span>
+                            {isBioExpanded ? nominee.bio : `${nominee.bio.slice(0, 100)}...`}
+                            <span
+                                onClick={() => setIsBioExpanded(!isBioExpanded)}
+                                className="text-secondary ml-2 font-bold cursor-pointer hover:underline"
+                            >
+                                {isBioExpanded ? 'Read less' : 'Read more'}
+                            </span>
                         </p>
                     </div>
 
@@ -184,11 +191,16 @@ const Profile = () => {
                     <div className="mb-12">
                         <div className="flex justify-between items-center mb-6">
                             <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Top Hits</h3>
-                            <span className="text-[10px] text-secondary font-bold uppercase tracking-widest cursor-pointer hover:underline">See all</span>
+                            <span
+                                onClick={() => setShowAllHits(!showAllHits)}
+                                className="text-[10px] text-secondary font-bold uppercase tracking-widest cursor-pointer hover:underline"
+                            >
+                                {showAllHits ? 'Show less' : 'See all'}
+                            </span>
                         </div>
 
                         <div className="space-y-4">
-                            {nominee.hits.map((hit, i) => (
+                            {(showAllHits ? nominee.hits : nominee.hits.slice(0, 2)).map((hit, i) => (
                                 <motion.div
                                     key={i}
                                     initial={{ x: -20, opacity: 0 }}

@@ -169,7 +169,13 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                         type="tel"
                                         placeholder="Numéro de téléphone"
                                         value={phoneNumber}
-                                        onChange={(e) => setPhoneNumber(e.target.value)}
+                                        maxLength={9}
+                                        onChange={(e) => {
+                                            const val = e.target.value.replace(/\D/g, '');
+                                            if (val.length <= 9) {
+                                                setPhoneNumber(val);
+                                            }
+                                        }}
                                         className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-16 pr-4 focus:outline-none focus:border-secondary transition-colors font-bold text-sm"
                                     />
                                 </div>

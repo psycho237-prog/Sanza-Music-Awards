@@ -18,6 +18,9 @@ const categories = [
 
 const Categories = () => {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [showAll, setShowAll] = useState(false);
+
+    const displayedCategories = showAll ? categories.slice(1) : categories.slice(1, 5);
 
     return (
         <div className="p-0 bg-black min-h-screen text-white pb-32">
@@ -83,12 +86,17 @@ const Categories = () => {
 
                 <div className="flex justify-between items-center">
                     <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Browse Categories</h3>
-                    <span className="text-[10px] text-secondary font-bold uppercase tracking-widest">View All</span>
+                    <button
+                        onClick={() => setShowAll(!showAll)}
+                        className="text-[10px] text-secondary font-bold uppercase tracking-widest hover:underline"
+                    >
+                        {showAll ? 'Show Less' : 'View All'}
+                    </button>
                 </div>
 
                 {/* Categories Grid */}
                 <div className="grid grid-cols-2 gap-4">
-                    {categories.slice(1).map((cat, index) => (
+                    {displayedCategories.map((cat, index) => (
                         <Link to="/nominees" key={cat.id}>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}

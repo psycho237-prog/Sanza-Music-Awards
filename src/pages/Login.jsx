@@ -6,9 +6,19 @@ import { Link } from 'react-router-dom';
 const Login = () => {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-6 relative bg-black overflow-hidden">
+            {/* Background Image with Overlay */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000&auto=format&fit=crop"
+                    alt="Background"
+                    className="w-full h-full object-cover opacity-20"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black" />
+            </div>
+
             {/* Background Gradients */}
-            <div className="absolute top-[-20%] left-[-20%] w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-[-20%] right-[-20%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
+            <div className="absolute top-[-20%] left-[-20%] w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[120px] animate-pulse z-0" />
+            <div className="absolute bottom-[-20%] right-[-20%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] z-0" />
 
             <motion.div
                 initial={{ opacity: 0, y: 30 }}

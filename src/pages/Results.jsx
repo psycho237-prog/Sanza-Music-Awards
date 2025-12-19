@@ -48,13 +48,21 @@ const Results = () => {
 
             <div className="px-6 space-y-8">
                 {/* Hero Stats */}
-                <div className="relative h-48 rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-secondary/20 to-primary/20 border border-white/5 p-8 flex flex-col justify-center">
-                    <div className="absolute top-0 right-0 p-4 opacity-10">
+                <div className="relative h-48 rounded-[2.5rem] overflow-hidden border border-white/5 p-8 flex flex-col justify-center">
+                    <img
+                        src="https://images.unsplash.com/photo-1514525253361-bee871871771?q=80&w=1000&auto=format&fit=crop"
+                        alt="Results Hero"
+                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
+                    <div className="absolute top-0 right-0 p-4 opacity-20">
                         <Trophy size={120} />
                     </div>
-                    <h3 className="text-sm font-bold text-secondary uppercase tracking-[0.2em] mb-2">Total Votes Cast</h3>
-                    <p className="text-5xl font-black tracking-tighter">1.2M+</p>
-                    <p className="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-widest">Updating in real-time • Next update in 4m</p>
+                    <div className="relative z-10">
+                        <h3 className="text-sm font-bold text-secondary uppercase tracking-[0.2em] mb-2">Total Votes Cast</h3>
+                        <p className="text-5xl font-black tracking-tighter">1.2M+</p>
+                        <p className="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-widest">Updating in real-time • Next update in 4m</p>
+                    </div>
                 </div>
 
                 {/* Live Standings */}
