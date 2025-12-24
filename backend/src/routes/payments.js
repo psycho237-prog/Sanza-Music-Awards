@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { getSupabase, mockData } from '../config/database.js';
+import { mockData } from '../config/database.js'; // Keep for mock data for now
+import { getDb } from '../config/firebase.js'; // Use Firebase
 import { config } from '../config/env.js';
 
 const router = Router();
@@ -27,6 +28,7 @@ const ERROR_MESSAGES = {
     'INSUFFICIENT_FUNDS': 'Solde insuffisant. Veuillez recharger votre compte.',
     'NOT_ENOUGH_MONEY': 'Solde insuffisant. Veuillez recharger votre compte.',
     'LOW_BALANCE': 'Solde insuffisant. Veuillez recharger votre compte.',
+    'LOW_BALANCE_OR_PAYEE_LIMIT_REACHED_OR_NOT_ALLOWED': 'Solde insuffisant ou limite atteinte.',
 
     // Timeout / User didn't confirm
     'TIMEOUT': 'Délai expiré. Vous n\'avez pas confirmé à temps.',
@@ -147,7 +149,6 @@ router.post('/initiate', async (req, res, next) => {
             created_at: new Date().toISOString(),
         };
 
-        const { getDb } = require('../config/firebase');
         const db = getDb();
         const serviceKey = config.monetbil?.serviceKey;
 
@@ -337,7 +338,7 @@ router.post('/callback', async (req, res, next) => {
 router.get('/status/:id', async (req, res, next) => {
     try {
         const { id } = req.params;
-        const supabase = getSupabase();
+        const db = getDb();
 
         // Check mock transactions first
         const tx = mockTransactions.find(t => t.id === parseInt(id) || t.payment_ref === id);
