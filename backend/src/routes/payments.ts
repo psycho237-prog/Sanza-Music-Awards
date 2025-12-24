@@ -1,25 +1,26 @@
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
+// @ts-ignore
 import { Payment } from '@hachther/mesomb';
-import { mockData } from '../config/database.js'; // Keep for mock data for now
+import { mockData, Transaction } from '../config/database.js'; // Keep for mock data for now
 import { getDb } from '../config/firebase.js'; // Use Firebase
 import { config } from '../config/env.js';
 
 const router = Router();
 
 // In-memory transactions for mock mode
-let mockTransactions = [];
+let mockTransactions: Transaction[] = [];
 
 // Price per vote in XAF
 const PRICE_PER_VOTE = 105;
 
 // Operator codes for MeSomb
-const OPERATOR_CODES = {
+const OPERATOR_CODES: Record<string, string> = {
     'MOMO': 'MTN',
     'OM': 'ORANGE',
 };
 
 // User-friendly error messages for common payment errors
-const ERROR_MESSAGES = {
+const ERROR_MESSAGES: Record<string, string> = {
     // Insufficient funds
     'INSUFFICIENT_BALANCE': 'Solde insuffisant. Veuillez recharger votre compte.',
     'INSUFFICIENT_FUNDS': 'Solde insuffisant. Veuillez recharger votre compte.',
@@ -65,7 +66,7 @@ const ERROR_MESSAGES = {
 };
 
 // Function to get user-friendly error message
-function getErrorMessage(apiError, apiMessage) {
+function getErrorMessage(apiError?: string, apiMessage?: string): string {
     // Check if we have a translation for the error code
     const errorCode = (apiError || '').toUpperCase().replace(/[\s-]/g, '_');
 
@@ -100,7 +101,7 @@ function getErrorMessage(apiError, apiMessage) {
 }
 
 // POST /api/payments/initiate - Start a payment with MeSomb
-router.post('/initiate', async (req, res, next) => {
+router.post('/initiate', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { nomineeId, voteCount, phoneNumber, paymentMethod } = req.body;
 
@@ -133,13 +134,13 @@ router.post('/initiate', async (req, res, next) => {
         const nominee = mockData.nominees.find(n => n.id === parseInt(nomineeId));
 
         // Create transaction record
-        const transaction = {
+        const transaction: Transaction = {
             id: Date.now(),
             nominee_id: parseInt(nomineeId),
             nominee_name: nominee?.name || 'Unknown',
             votes_count: parseInt(voteCount),
             amount,
-            payment_method: paymentMethod,
+            payment_method: paymentMethod as 'MOMO' | 'OM',
             phone_number: `+237${cleanPhone}`,
             status: 'pending',
             payment_ref: paymentRef,
@@ -257,7 +258,7 @@ router.post('/initiate', async (req, res, next) => {
                     transactionId: transaction.id,
                 });
             }
-        } catch (apiError) {
+        } catch (apiError: any) {
             console.error('MeSomb API error:', apiError);
 
             // Handle MeSomb specific error responses
@@ -282,7 +283,7 @@ router.post('/initiate', async (req, res, next) => {
 });
 
 // GET /api/payments/status/:id - Check payment status
-router.get('/status/:id', async (req, res, next) => {
+router.get('/status/:id', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { id } = req.params;
         const db = getDb();

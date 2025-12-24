@@ -1,7 +1,7 @@
 import admin from 'firebase-admin';
 import { config } from './env.js';
 
-let db = null;
+let db: admin.database.Database | null = null;
 
 try {
     // Check if service account is provided via environment variables
@@ -14,17 +14,19 @@ try {
         }
 
         if (serviceAccount) {
-            admin.initializeApp({
-                credential: admin.credential.cert(serviceAccount),
-                databaseURL: "https://studio-3pdzg-default-rtdb.firebaseio.com" // From user config
-            });
+            if (!admin.apps.length) {
+                admin.initializeApp({
+                    credential: admin.credential.cert(serviceAccount),
+                    databaseURL: process.env.FIREBASE_DATABASE_URL || "https://studio-3pdzg-default-rtdb.firebaseio.com"
+                });
+            }
             db = admin.database(); // Use Realtime Database
             console.log('🔥 Firebase Realtime Database initialized successfully');
         }
     } else {
         console.warn('⚠️ No FIREBASE_SERVICE_ACCOUNT found. Using mock data mode.');
     }
-} catch (error) {
+} catch (error: any) {
     console.error('❌ Firebase initialization failed:', error.message);
 }
 

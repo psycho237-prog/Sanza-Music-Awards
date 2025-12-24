@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { mockData } from '../config/database.js';
 import { getDb } from '../config/firebase.js';
 
 const router = Router();
 
 // GET /api/categories - List all categories
-router.get('/', async (req, res, next) => {
+router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const db = getDb();
         if (!db) {
@@ -17,9 +17,10 @@ router.get('/', async (req, res, next) => {
             return res.json(mockData.categories);
         }
 
-        const categories = [];
+        const categories: any[] = [];
         snapshot.forEach(child => {
             categories.push({ id: child.key, ...child.val() });
+            return false; // Type requirement for RTDB forEach
         });
 
         res.json(categories);
@@ -29,7 +30,7 @@ router.get('/', async (req, res, next) => {
 });
 
 // GET /api/categories/:id - Get single category
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { id } = req.params;
         const db = getDb();

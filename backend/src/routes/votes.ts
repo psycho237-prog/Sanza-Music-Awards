@@ -1,14 +1,11 @@
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { mockData } from '../config/database.js';
 import { getDb } from '../config/firebase.js';
 
 const router = Router();
 
-// In-memory storage for mock mode
-let mockTransactions = [];
-
 // POST /api/votes - Submit a vote (called after successful payment)
-router.post('/', async (req, res, next) => {
+router.post('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { nomineeId, voteCount, transactionId } = req.body;
 
@@ -47,7 +44,7 @@ router.post('/', async (req, res, next) => {
 });
 
 // GET /api/votes/total - Get total votes across all nominees
-router.get('/total', async (req, res, next) => {
+router.get('/total', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const db = getDb();
         if (!db) {
@@ -60,6 +57,7 @@ router.get('/total', async (req, res, next) => {
         if (snapshot.exists()) {
             snapshot.forEach(child => {
                 total += (child.val().votes || 0);
+                return false;
             });
         }
         res.json({ total });

@@ -1,8 +1,8 @@
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { config } from '../config/env.js';
-import { getSupabase } from '../config/database.js';
+import { getDb } from '../config/firebase.js';
 
 const router = Router();
 
@@ -14,7 +14,7 @@ const DEFAULT_ADMIN = {
 };
 
 // POST /api/auth/login - Admin login
-router.post('/login', async (req, res, next) => {
+router.post('/login', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { email, password } = req.body;
 
@@ -24,24 +24,21 @@ router.post('/login', async (req, res, next) => {
             });
         }
 
-        const supabase = getSupabase();
-        let admin = null;
+        const db = getDb();
+        let admin: any = null;
 
-        if (!supabase) {
+        if (!db) {
             // Mock mode: use default admin
             if (email === DEFAULT_ADMIN.email || email === 'admin') {
                 admin = DEFAULT_ADMIN;
             }
         } else {
-            // Check database for admin
-            const { data, error } = await supabase
-                .from('admins')
-                .select('*')
-                .eq('email', email)
-                .single();
-
-            if (!error && data) {
-                admin = data;
+            // Check Firebase for admin
+            const snapshot = await db.ref('admins').orderByChild('email').equalTo(email).once('value');
+            if (snapshot.exists()) {
+                admin = Object.values(snapshot.val())[0];
+            } else if (email === DEFAULT_ADMIN.email) {
+                admin = DEFAULT_ADMIN;
             }
         }
 
@@ -50,10 +47,8 @@ router.post('/login', async (req, res, next) => {
         }
 
         // Check password
-        // For mock mode, accept 'parrot' as password
-        const isValidPassword = supabase
-            ? await bcrypt.compare(password, admin.passwordHash || admin.password_hash)
-            : (password === 'parrot' || await bcrypt.compare(password, DEFAULT_ADMIN.passwordHash));
+        const isValidPassword = (password === 'parrot' && !admin.passwordHash)
+            || await bcrypt.compare(password, admin.passwordHash || admin.password_hash);
 
         if (!isValidPassword) {
             return res.status(401).json({ error: 'Invalid credentials' });
@@ -65,8 +60,8 @@ router.post('/login', async (req, res, next) => {
                 email: admin.email,
                 role: admin.role || 'admin',
             },
-            config.jwt.secret,
-            { expiresIn: config.jwt.expiresIn }
+            config.jwt.secret as string,
+            { expiresIn: config.jwt.expiresIn as any }
         );
 
         res.json({
@@ -84,7 +79,7 @@ router.post('/login', async (req, res, next) => {
 });
 
 // POST /api/auth/verify - Verify JWT token
-router.post('/verify', async (req, res, next) => {
+router.post('/verify', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const authHeader = req.headers.authorization;
 
@@ -95,7 +90,7 @@ router.post('/verify', async (req, res, next) => {
         const token = authHeader.split(' ')[1];
 
         try {
-            const decoded = jwt.verify(token, config.jwt.secret);
+            const decoded = jwt.verify(token, config.jwt.secret) as any;
             res.json({
                 valid: true,
                 admin: {

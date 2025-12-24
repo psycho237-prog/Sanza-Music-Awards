@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { mockData } from '../config/database.js';
 import { getDb } from '../config/firebase.js';
 
 const router = Router();
 
 // Helper to format votes for display
-function formatVotes(votes) {
+function formatVotes(votes: number): string {
     if (votes >= 1000000) {
         return `${(votes / 1000000).toFixed(1)}M`;
     }
@@ -16,7 +16,7 @@ function formatVotes(votes) {
 }
 
 // GET /api/nominees - List all nominees (with optional category filter)
-router.get('/', async (req, res, next) => {
+router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { categoryId } = req.query;
         const db = getDb();
@@ -24,23 +24,24 @@ router.get('/', async (req, res, next) => {
         if (!db) {
             let nominees = mockData.nominees;
             if (categoryId) {
-                nominees = nominees.filter(n => n.category_id === parseInt(categoryId));
+                nominees = nominees.filter(n => n.category_id === parseInt(categoryId as string));
             }
             return res.json(nominees.map(n => ({ ...n, votes_display: formatVotes(n.votes) })));
         }
 
         const snapshot = await db.ref('nominees').once('value');
-        let nominees = [];
+        let nominees: any[] = [];
         if (snapshot.exists()) {
             snapshot.forEach(child => {
                 nominees.push({ id: child.key, ...child.val() });
+                return false;
             });
         } else {
             nominees = mockData.nominees;
         }
 
         if (categoryId) {
-            nominees = nominees.filter(n => n.category_id === parseInt(categoryId));
+            nominees = nominees.filter(n => n.category_id === parseInt(categoryId as string));
         }
 
         res.json(nominees.map(n => ({
@@ -53,7 +54,7 @@ router.get('/', async (req, res, next) => {
 });
 
 // GET /api/nominees/:id - Get single nominee
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { id } = req.params;
         const db = getDb();
@@ -80,7 +81,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // GET /api/nominees/rankings/global - Global rankings
-router.get('/rankings/global', async (req, res, next) => {
+router.get('/rankings/global', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const db = getDb();
         if (!db) {
@@ -91,9 +92,10 @@ router.get('/rankings/global', async (req, res, next) => {
         }
 
         const snapshot = await db.ref('nominees').once('value');
-        let nominees = [];
+        let nominees: any[] = [];
         snapshot.forEach(child => {
             nominees.push({ id: child.key, ...child.val() });
+            return false;
         });
 
         const ranked = nominees

@@ -1,7 +1,12 @@
+import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { config } from '../config/env.js';
 
-export function authMiddleware(req, res, next) {
+export interface AuthRequest extends Request {
+    admin?: any;
+}
+
+export function authMiddleware(req: AuthRequest, res: Response, next: NextFunction) {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {

@@ -1,7 +1,33 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const config = {
+interface Config {
+    port: string | number;
+    nodeEnv: string;
+    supabase: {
+        url?: string;
+        anonKey?: string;
+        serviceKey?: string;
+    };
+    jwt: {
+        secret: string;
+        expiresIn: string;
+    };
+    admin: {
+        email: string;
+        passwordHash?: string;
+    };
+    monetbil: {
+        serviceKey: string;
+    };
+    mesomb: {
+        apiKey?: string;
+        appKey?: string;
+    };
+    frontendUrl: string;
+}
+
+export const config: Config = {
     port: process.env.PORT || 3001,
     nodeEnv: process.env.NODE_ENV || 'development',
 
@@ -40,7 +66,7 @@ export const config = {
 };
 
 // Validate required config in production
-export function validateConfig() {
+export function validateConfig(): boolean {
     const required = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'JWT_SECRET'];
     const missing = required.filter(key => !process.env[key]);
 

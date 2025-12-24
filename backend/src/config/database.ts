@@ -1,31 +1,51 @@
-import { createClient } from '@supabase/supabase-js';
 import { config } from './env.js';
 
-let supabase = null;
-
-export function getSupabase() {
-    if (!supabase) {
-        if (!config.supabase.url || !config.supabase.anonKey) {
-            console.warn('⚠️  Supabase not configured - using mock mode');
-            return null;
-        }
-
-        supabase = createClient(
-            config.supabase.url,
-            config.supabase.serviceKey || config.supabase.anonKey,
-            {
-                auth: {
-                    autoRefreshToken: false,
-                    persistSession: false,
-                },
-            }
-        );
-    }
-    return supabase;
+export interface Category {
+    id: string | number;
+    title: string;
+    nominees_count: string;
+    image_url: string;
+    featured: boolean;
 }
 
-// Mock data for development without Supabase
-export const mockData = {
+export interface Nominee {
+    id: string | number;
+    category_id: string | number;
+    name: string;
+    song: string;
+    votes: number;
+    image_url: string;
+    tag: string | null;
+    description: string;
+    bio?: string;
+    genre: string;
+    country: string;
+    rank?: string;
+    listeners?: string;
+    votes_display?: string;
+}
+
+export interface Transaction {
+    id: string | number;
+    nominee_id: number;
+    nominee_name: string;
+    votes_count: number;
+    amount: number;
+    payment_method: 'MOMO' | 'OM';
+    phone_number: string;
+    status: 'pending' | 'success' | 'failed' | 'completed';
+    payment_ref?: string;
+    external_tx_id?: string;
+    created_at: string;
+    error?: string;
+}
+
+// Mock data for seeding Firebase
+export const mockData: {
+    categories: Category[];
+    nominees: Nominee[];
+    transactions: Transaction[];
+} = {
     categories: [
         { id: 1, title: 'Artist of the Year', nominees_count: '12 Nominees', image_url: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000', featured: true },
         { id: 2, title: 'Best Male Vocalist', nominees_count: '8 Nominees', image_url: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=1000', featured: false },
