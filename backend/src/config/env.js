@@ -29,6 +29,12 @@ export const config = {
         serviceKey: process.env.MONETBIL_SERVICE_KEY || 'Ri1F3N4mHaser83s9FGUuQICP3IN12zh',
     },
 
+    // MeSomb Payment
+    mesomb: {
+        apiKey: process.env.MESOMB_API_KEY,
+        appKey: process.env.MESOMB_APP_KEY,
+    },
+
     // CORS
     frontendUrl: process.env.FRONTEND_URL || 'http://localhost:5173',
 };

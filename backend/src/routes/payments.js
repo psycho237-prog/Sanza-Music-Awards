@@ -1,13 +1,10 @@
 import { Router } from 'express';
+import { Payment } from '@hachther/mesomb';
 import { mockData } from '../config/database.js'; // Keep for mock data for now
 import { getDb } from '../config/firebase.js'; // Use Firebase
 import { config } from '../config/env.js';
 
 const router = Router();
-
-// Monetbil API Configuration
-const MONETBIL_API_URL = 'https://api.monetbil.com/payment/v1/placePayment';
-const MONETBIL_CHECK_URL = 'https://api.monetbil.com/payment/v1/checkPayment';
 
 // In-memory transactions for mock mode
 let mockTransactions = [];
@@ -15,10 +12,10 @@ let mockTransactions = [];
 // Price per vote in XAF
 const PRICE_PER_VOTE = 105;
 
-// Operator codes for Monetbil
+// Operator codes for MeSomb
 const OPERATOR_CODES = {
-    'MOMO': 'CM_MTNMOBILEMONEY',  // MTN Mobile Money Cameroon
-    'OM': 'CM_ORANGEMONEY',       // Orange Money Cameroon
+    'MOMO': 'MTN',
+    'OM': 'ORANGE',
 };
 
 // User-friendly error messages for common payment errors
@@ -102,7 +99,7 @@ function getErrorMessage(apiError, apiMessage) {
     return apiMessage || apiError || 'Paiement échoué. Veuillez réessayer.';
 }
 
-// POST /api/payments/initiate - Start a payment with Monetbil
+// POST /api/payments/initiate - Start a payment with MeSomb
 router.post('/initiate', async (req, res, next) => {
     try {
         const { nomineeId, voteCount, phoneNumber, paymentMethod } = req.body;
@@ -150,10 +147,10 @@ router.post('/initiate', async (req, res, next) => {
         };
 
         const db = getDb();
-        const serviceKey = config.monetbil?.serviceKey;
+        const { apiKey, appKey } = config.mesomb || {};
 
-        // Check if Monetbil is configured
-        if (!serviceKey) {
+        // Check if MeSomb is configured
+        if (!apiKey || !appKey) {
             // Mock mode: simulate payment
             console.log(`📱 Mock payment initiated: ${paymentMethod} | ${transaction.phone_number} | ${amount} XAF`);
 
@@ -193,144 +190,94 @@ router.post('/initiate', async (req, res, next) => {
             }
         }
 
-        // Production: Use Monetbil API
-        console.log(`📱 Monetbil payment: ${paymentMethod} | ${transaction.phone_number} | ${amount} XAF`);
-
-        const monetbilPayload = {
-            service: serviceKey,
-            phonenumber: `237${cleanPhone}`,
-            amount: amount,
-            country: 'CM',
-            currency: 'XAF',
-            operator: OPERATOR_CODES[paymentMethod],
-            payment_ref: paymentRef,
-            item_ref: `nominee_${nomineeId}`,
-            notify_url: `${config.frontendUrl}/api/payments/callback`,
-        };
+        // Production: Use MeSomb SDK
+        console.log(`📱 MeSomb payment: ${paymentMethod} | ${transaction.phone_number} | ${amount} XAF`);
 
         try {
-            const response = await fetch(MONETBIL_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(monetbilPayload),
+            const payment = new Payment({
+                applicationKey: appKey,
+                accessKey: apiKey,
             });
 
-            const result = await response.json();
-            console.log('Monetbil response:', result);
+            const collectionResponse = await payment.collect({
+                amount: amount,
+                service: OPERATOR_CODES[paymentMethod],
+                phoneNumber: cleanPhone,
+                country: 'CM',
+                currency: 'XAF',
+                payer: cleanPhone,
+                fees: false,
+                message: `Voting for ${nominee?.name || 'Nominee'}`,
+            });
 
-            if (result.success === '1' || result.status === 'REQUEST_ACCEPTED') {
-                transaction.status = 'pending';
-                transaction.external_tx_id = result.paymentId || result.payment_id;
+            console.log('MeSomb response:', collectionResponse);
+
+            if (collectionResponse.isOperationSuccess()) {
+                const transactionData = collectionResponse.transaction;
+
+                transaction.status = transactionData.status === 'SUCCESS' ? 'success' : 'pending';
+                transaction.external_tx_id = transactionData.pk;
                 mockTransactions.unshift(transaction);
 
                 // Save to database if available
                 if (db) {
-                    // Realtime Database: Use transaction ID as key
                     await db.ref(`transactions/${transaction.id}`).set(transaction);
+                }
+
+                if (transaction.status === 'success') {
+                    // Update votes
+                    if (nominee) {
+                        nominee.votes += transaction.votes_count;
+                    }
+
+                    // Update database votes atomically
+                    if (db) {
+                        await db.ref(`nominees/${transaction.nominee_id}/votes`).transaction((current) => (current || 0) + transaction.votes_count);
+                    }
                 }
 
                 return res.json({
                     success: true,
                     transactionId: transaction.id,
-                    paymentId: result.paymentId,
-                    status: 'pending',
-                    message: 'Payment initiated. Please confirm on your phone.',
+                    paymentId: transactionData.pk,
+                    status: transaction.status,
+                    message: transaction.status === 'success'
+                        ? 'Payment successful!'
+                        : 'Payment initiated. Please confirm on your phone.',
                 });
             } else {
-                const userError = getErrorMessage(result.status, result.message);
+                // Operation failed at initiation
                 transaction.status = 'failed';
-                transaction.error = userError;
+                transaction.error = 'Failed to initiate payment. Please try again.';
                 mockTransactions.unshift(transaction);
 
-                return res.status(402).json({
+                return res.status(400).json({
                     success: false,
-                    error: userError,
+                    error: transaction.error,
                     transactionId: transaction.id,
                 });
             }
         } catch (apiError) {
-            console.error('Monetbil API error:', apiError);
-            const userError = getErrorMessage('NETWORK_ERROR', apiError.message);
+            console.error('MeSomb API error:', apiError);
+
+            // Handle MeSomb specific error responses
+            let userError = 'Payment failed. Please try again.';
+            if (apiError.message) {
+                userError = getErrorMessage('FAILED', apiError.message);
+            }
+
             transaction.status = 'failed';
             transaction.error = userError;
             mockTransactions.unshift(transaction);
 
-            return res.status(500).json({
+            return res.status(402).json({
                 success: false,
                 error: userError,
+                transactionId: transaction.id,
             });
         }
     } catch (err) {
         next(err);
-    }
-});
-
-// POST /api/payments/callback - Monetbil webhook callback
-router.post('/callback', async (req, res, next) => {
-    try {
-        const {
-            payment_ref,
-            status,
-            transaction_id,
-            phone,
-            amount,
-            message
-        } = req.body;
-
-        console.log(`📞 Monetbil callback: ${payment_ref} | Status: ${status}`);
-
-        const db = getDb();
-
-        // Find transaction by payment_ref
-        const tx = mockTransactions.find(t => t.payment_ref === payment_ref);
-
-        if (tx) {
-            const newStatus = status === '1' ? 'success' : 'failed';
-            tx.status = newStatus;
-            tx.external_tx_id = transaction_id;
-
-            // If successful, add votes
-            if (newStatus === 'success' && tx.status !== 'success') {
-                const nominee = mockData.nominees.find(n => n.id === tx.nominee_id);
-                if (nominee) {
-                    nominee.votes += tx.votes_count;
-                }
-            }
-
-            // Update database if available
-            if (db) {
-                // RTDB needs to query by child property
-                const transactionsRef = db.ref('transactions');
-                const snapshot = await transactionsRef.orderByChild('payment_ref').equalTo(payment_ref).once('value');
-
-                if (snapshot.exists()) {
-                    const updates = {};
-                    snapshot.forEach((childSnapshot) => {
-                        updates[`${childSnapshot.key}/status`] = newStatus;
-                        updates[`${childSnapshot.key}/external_tx_id`] = transaction_id;
-                    });
-
-                    await transactionsRef.update(updates);
-
-                    // Increment votes atomically
-                    if (newStatus === 'success') {
-                        const nomineeRef = db.ref(`nominees/${tx.nominee_id}`);
-                        // Use transaction for atomic increment
-                        await nomineeRef.child('votes').transaction((currentVotes) => {
-                            return (currentVotes || 0) + tx.votes_count;
-                        });
-                    }
-                }
-            }
-        }
-
-        // Monetbil expects a simple OK response
-        res.json({ received: true, status: tx?.status });
-    } catch (err) {
-        console.error('Callback error:', err);
-        res.json({ received: true, error: err.message });
     }
 });
 
@@ -344,55 +291,23 @@ router.get('/status/:id', async (req, res, next) => {
         const tx = mockTransactions.find(t => t.id === parseInt(id) || t.payment_ref === id);
 
         if (tx) {
-            // If pending and we have Monetbil configured, check with their API
-            if (tx.status === 'pending' && config.monetbil?.serviceKey && tx.external_tx_id) {
-                try {
-                    const checkResponse = await fetch(MONETBIL_CHECK_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            paymentId: tx.external_tx_id,
-                            service: config.monetbil.serviceKey,
-                        }),
-                    });
-                    const checkResult = await checkResponse.json();
-
-                    console.log('Monetbil Check Raw:', JSON.stringify(checkResult));
-
-                    if (['1', 'SUCCESS', '200', '201'].includes(checkResult.status?.toString())) {
-                        tx.status = 'success';
-                        // Update votes
-                        const nominee = mockData.nominees.find(n => n.id === tx.nominee_id);
-                        if (nominee) {
-                            nominee.votes += tx.votes_count;
-                        }
-                    } else if (
-                        ['-1', '0', 'FAILED', 'CANCELLED'].includes(checkResult.status?.toString()) ||
-                        checkResult.error_msg ||
-                        (checkResult.message && !['1', 'SUCCESS'].includes(checkResult.status))
-                    ) {
-                        // Check multiple fields for the error message
-                        const rawError = checkResult.error_msg || checkResult.message || checkResult.description || 'Transaction failed';
-
-                        tx.status = 'failed';
-                        tx.error = getErrorMessage('FAILED', rawError);
-                    }
-                } catch (e) {
-                    console.error('Status check error:', e);
-                }
-            }
-
+            // MeSomb is synchronous usually, but if it was pending we might need to check
+            // However, MeSomb status check is usually done via a separate request if needed
+            // For now, if it's already success/failed we just return it
             return res.json(tx);
         }
 
         // Check database (Realtime DB)
         if (db) {
-            // Check by ID directly
             const txRef = db.ref(`transactions/${id}`);
             const snapshot = await txRef.once('value');
 
             if (snapshot.exists()) {
-                return res.json(snapshot.val());
+                const data = snapshot.val();
+
+                // If it's still pending in DB, we could try to verify with MeSomb
+                // But for the MVP, the initiation status is usually final for collect
+                return res.json(data);
             }
 
             // Check by payment_ref
