@@ -25,7 +25,7 @@ const Landing = () => {
                     <h1 className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#FDB931]/80">Sanza Music Awards</h1>
                 </div>
                 <Link to="/results" className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors relative border border-white/10 group flex items-center justify-center">
-                    <SanzaTrophy size={16} className="group-hover:drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-all" />
+                    <SanzaTrophy size={24} className="group-hover:drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-all" />
                     <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
                 </Link>
             </div>
