@@ -43,10 +43,10 @@ const Landing = () => {
                 </Link>
             </div>
 
-            <div className="flex-1 flex flex-col items-center justify-center relative w-full z-10 px-4 md:px-0">
+            <div className="flex-1 flex flex-col items-center justify-start relative w-full z-10 px-4 md:px-0">
 
                 {/* Hero Section Content */}
-                <div className="w-full min-h-[75vh] flex flex-col items-center justify-center py-8">
+                <div className="w-full min-h-[75vh] flex flex-col items-center justify-start pt-16 md:pt-24 py-8">
 
                     {/* Main Logo Block - Optimized for Impact on Mobile */}
                     <div className="flex flex-row items-center justify-center gap-3 md:gap-8 mb-10 md:mb-14">
@@ -98,7 +98,7 @@ const Landing = () => {
                         className="flex flex-col items-center gap-10 w-full max-w-[300px] xs:max-w-md"
                     >
                         <Link to="/categories" className="w-full md:w-auto">
-                            <button className="w-full md:w-auto px-12 xs:px-16 py-4.5 xs:py-5 bg-gradient-to-r from-[#DF9F28] via-[#FDB931] to-[#DF9F28] text-[#051040] font-black uppercase tracking-widest text-xs xs:text-sm rounded-full shadow-[0_4px_30px_rgba(253,185,49,0.4)] hover:scale-105 active:scale-95 transition-all duration-300">
+                            <button className="w-full md:w-auto px-20 xs:px-24 py-4 xs:py-4.5 bg-gradient-to-r from-[#DF9F28] via-[#FDB931] to-[#DF9F28] text-[#051040] font-black uppercase tracking-widest text-xs xs:text-sm rounded-full shadow-[0_4px_30px_rgba(253,185,49,0.4)] hover:scale-105 active:scale-95 transition-all duration-300">
                                 Votez Maintenant
                             </button>
                         </Link>
