@@ -3,99 +3,30 @@ import React from 'react';
 const SanzaTrophy = ({ className }) => {
     return (
         <svg
-            viewBox="0 0 100 220"
+            viewBox="0 0 100 250"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={className}
         >
             <defs>
-                <linearGradient id="goldGradientMain" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#CA8A04" />
-                    <stop offset="50%" stopColor="#FACC15" />
-                    <stop offset="100%" stopColor="#CA8A04" />
-                </linearGradient>
-
-                <linearGradient id="goldGradientDark" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#A16207" />
-                    <stop offset="50%" stopColor="#CA8A04" />
-                    <stop offset="100%" stopColor="#A16207" />
-                </linearGradient>
-
-                <linearGradient id="starGradient" x1="50%" y1="0%" x2="50%" y2="100%">
-                    <stop offset="0%" stopColor="#FDE047" />
-                    <stop offset="100%" stopColor="#CA8A04" />
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#B8860B" stopOpacity="1" />
+                    <stop offset="50%" stopColor="#FFD700" stopOpacity="1" />
+                    <stop offset="100%" stopColor="#8B6508" stopOpacity="1" />
                 </linearGradient>
             </defs>
 
-            {/* --- Base Section (Three Steps) --- */}
-            {/* Bottom Step */}
-            <path
-                d="M25 210 H75 A 3 3 0 0 1 75 216 H25 A 3 3 0 0 1 25 210 Z"
-                fill="url(#goldGradientMain)"
-            />
-            {/* Middle Step */}
-            <path
-                d="M30 200 H70 A 3 3 0 0 1 70 206 H30 A 3 3 0 0 1 30 200 Z"
-                fill="url(#goldGradientMain)"
-            />
-            {/* Top Dome/Step */}
-            <path
-                d="M35 190 H65 A 15 15 0 0 1 65 196 H35 A 15 15 0 0 1 35 190 Z"
-                fill="url(#goldGradientMain)"
-            />
-            {/* Semi-Circle Dome under star */}
-            <path
-                d="M35 190 C 35 175, 65 175, 65 190 Z"
-                fill="url(#goldGradientDark)"
-            />
+            <path d="M50 200 C30 180 20 120 40 40 C42 30 48 10 50 5 C52 10 58 30 60 40 C80 120 70 180 50 200 Z" fill="url(#goldGradient)" />
 
+            <path d="M38 185 C20 150 25 80 45 35 C35 70 30 140 38 185 Z" fill="#DAA520" opacity="0.8" />
 
-            {/* --- The Body (Abstract Flame Structure) --- */}
+            <path d="M62 185 C80 150 75 80 55 35 C65 70 70 140 62 185 Z" fill="#8B6508" opacity="0.6" />
 
-            {/* Left Blade - Large curved side element */}
-            <path
-                d="M35 185 
-           C 15 140, 20 100, 35 70 
-           C 40 100, 40 130, 45 160 
-           C 35 170, 35 180, 35 185 Z"
-                fill="url(#goldGradientMain)"
-            />
+            <polygon points="50,152 53,162 63,162 55,168 58,178 50,172 42,178 45,168 37,162 47,162" fill="#8B6508" />
 
-            {/* Right Blade - Large curved side element */}
-            <path
-                d="M65 185 
-           C 85 140, 80 100, 65 70 
-           C 60 100, 60 130, 55 160 
-           C 65 170, 65 180, 65 185 Z"
-                fill="url(#goldGradientMain)"
-            />
-
-
-            {/* Center Ribbon / Top Flame Element */}
-            {/* This rises higher between the two notes from the reference */}
-            <path
-                d="M35 70 
-           C 35 30, 50 10, 50 10 
-           C 50 10, 65 30, 65 70 
-           C 55 50, 45 50, 35 70 Z"
-                fill="url(#goldGradientDark)"
-            />
-
-            {/* Inner Swoosh details to match the layered look */}
-            <path
-                d="M40 80 C 45 60, 55 60, 60 80 L 50 120 Z"
-                fill="url(#goldGradientMain)"
-                opacity="0.8"
-            />
-
-
-            {/* --- The Star --- */}
-            <path
-                transform="translate(50, 165) scale(0.8)"
-                d="M0 -10 L 2.9 -3.2 L 10 -3.2 L 4.2 1.5 L 6.4 8.5 L 0 4.2 L -6.4 8.5 L -4.2 1.5 L -10 -3.2 L -2.9 -3.2 Z"
-                fill="url(#starGradient)"
-            />
-
+            <path d="M35 205 H65 C68 205 70 207 70 210 V212 H30 V210 C30 207 32 205 35 205 Z" fill="url(#goldGradient)" />
+            <path d="M32 215 H68 V222 H32 V215 Z" fill="url(#goldGradient)" />
+            <path d="M28 225 H72 V235 H28 V225 Z" fill="url(#goldGradient)" />
         </svg>
     );
 };
