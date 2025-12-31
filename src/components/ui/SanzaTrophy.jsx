@@ -1,8 +1,10 @@
 import React from 'react';
 
-const SanzaTrophy = ({ className }) => {
+const SanzaTrophy = ({ className, size = 100 }) => {
     return (
         <svg
+            width={size}
+            height={size * 2.5}
             viewBox="0 0 100 250"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -10,9 +12,9 @@ const SanzaTrophy = ({ className }) => {
         >
             <defs>
                 <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#B8860B" stopOpacity="1" />
-                    <stop offset="50%" stopColor="#FFD700" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#8B6508" stopOpacity="1" />
+                    <stop offset="0%" style={{ stopColor: '#B8860B', stopOpacity: 1 }} />
+                    <stop offset="50%" style={{ stopColor: '#FFD700', stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: '#8B6508', stopOpacity: 1 }} />
                 </linearGradient>
             </defs>
 

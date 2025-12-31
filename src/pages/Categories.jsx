@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
-import { Mic2, Users, Music, Video, Star, Sparkles, ChevronLeft, Search, Heart, Disc, Radio, Zap, Trophy } from 'lucide-react';
+import { Mic2, Users, Music, Video, Star, Sparkles, ChevronLeft, Search, Heart, Disc, Radio, Zap } from 'lucide-react';
+import SanzaTrophy from '../components/ui/SanzaTrophy';
 import { Link } from 'react-router-dom';
 import { useVotes } from '../context/VoteContext';
 import SearchOverlay from '../components/SearchOverlay';
@@ -30,8 +31,8 @@ const Categories = () => {
             case 'Producer of the Year': return Zap;
             case 'Best Collaboration': return Users;
             case 'Best Live Performance': return Radio;
-            case 'Best Afrobeat Artist': return Trophy;
-            default: return Trophy;
+            case 'Best Afrobeat Artist': return SanzaTrophy;
+            default: return SanzaTrophy;
         }
     };
 

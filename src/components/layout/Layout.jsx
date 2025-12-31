@@ -1,5 +1,6 @@
 import { Outlet, useLocation, Link } from 'react-router-dom';
-import { Home, LayoutGrid, Trophy, User } from 'lucide-react';
+import { Home, LayoutGrid, User } from 'lucide-react';
+import SanzaTrophy from '../ui/SanzaTrophy';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLayout } from '../../context/LayoutContext';
 
@@ -10,7 +11,7 @@ const Layout = () => {
     const navItems = [
         { icon: Home, label: 'Home', path: '/' },
         { icon: LayoutGrid, label: 'Categories', path: '/categories' },
-        { icon: Trophy, label: 'Results', path: '/results' },
+        { icon: SanzaTrophy, label: 'Results', path: '/results' },
         { icon: User, label: 'Profile', path: '/profile' },
     ];
 

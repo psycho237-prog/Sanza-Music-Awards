@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
-import { Trophy, Star, TrendingUp, ChevronLeft, Search, Medal, Crown, Filter } from 'lucide-react';
+import { Star, TrendingUp, ChevronLeft, Search, Medal, Crown, Filter } from 'lucide-react';
+import SanzaTrophy from '../components/ui/SanzaTrophy';
 import { Link } from 'react-router-dom';
 import SearchOverlay from '../components/SearchOverlay';
 import { useVotes } from '../context/VoteContext';
@@ -68,7 +69,7 @@ const Results = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
                     <div className="absolute top-0 right-0 p-4 opacity-20">
-                        <Trophy size={120} />
+                        <SanzaTrophy size={60} />
                     </div>
                     <div className="relative z-10">
                         <h3 className="text-sm font-bold text-secondary uppercase tracking-[0.2em] mb-2">Total Votes Cast</h3>
@@ -186,7 +187,7 @@ const Results = () => {
                                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
                                     <div className="absolute top-3 right-3">
-                                        <Crown size={16} className="text-yellow-400" fill="currentColor" />
+                                        <SanzaTrophy size={16} className="text-yellow-400" fill="currentColor" />
                                     </div>
 
                                     <div className="absolute bottom-4 left-4 right-4">

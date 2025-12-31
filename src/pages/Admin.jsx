@@ -12,13 +12,13 @@ import {
     Lock,
     ArrowRight,
     ChevronLeft,
-    Trophy,
-    Activity,
     CheckCircle,
     XCircle,
     AlertCircle,
-    RefreshCw
+    RefreshCw,
+    Activity
 } from 'lucide-react';
+import SanzaTrophy from '../components/ui/SanzaTrophy';
 import { Link } from 'react-router-dom';
 import { useVotes } from '../context/VoteContext';
 import Button from '../components/ui/Button';
@@ -393,7 +393,7 @@ const Admin = () => {
                 {/* Top Nominees */}
                 <div>
                     <h3 className="text-sm font-black tracking-tight mb-6 flex items-center gap-2">
-                        <Trophy size={16} className="text-yellow-500" />
+                        <SanzaTrophy size={8} />
                         Top Nominees
                     </h3>
                     <div className="grid grid-cols-1 gap-3">
