@@ -26,7 +26,8 @@ const Profile = () => {
             topHits: "Meilleurs Titres",
             showAll: "Tout voir",
             showLess: "Voir moins",
-            voteFor: "VOTER POUR"
+            voteFor: "VOTER POUR",
+            voteForMe: "Vote pour moi"
         },
         EN: {
             copied: "Link Copied!",
@@ -41,9 +42,11 @@ const Profile = () => {
             topHits: "Top Hits",
             showAll: "View All",
             showLess: "View Less",
-            voteFor: "VOTE FOR"
+            voteFor: "VOTE FOR",
+            voteForMe: "Vote for me"
         }
     }[language];
+
     const [isCopied, setIsCopied] = useState(false);
     const [isBioExpanded, setIsBioExpanded] = useState(false);
     const [showAllHits, setShowAllHits] = useState(false);
@@ -58,6 +61,54 @@ const Profile = () => {
         }
         return nominees[Math.floor(Math.random() * nominees.length)];
     }, [nominees, nomineeId]);
+
+    // Update SEO Meta Tags for social sharing
+    useEffect(() => {
+        if (nominee) {
+            const voteMessage = `${t.voteForMe} - ${nominee.name}`;
+            const originalTitle = document.title;
+            const originalDescription = document.querySelector('meta[name="description"]')?.getAttribute('content');
+            const originalOgTitle = document.querySelector('meta[property="og:title"]')?.getAttribute('content');
+            const originalOgDesc = document.querySelector('meta[property="og:description"]')?.getAttribute('content');
+            const originalOgImage = document.querySelector('meta[property="og:image"]')?.getAttribute('content');
+
+            document.title = `${voteMessage} | Sanza Music Awards`;
+
+            const updateMeta = (name, content, property = false) => {
+                let element = property
+                    ? document.querySelector(`meta[property="${name}"]`)
+                    : document.querySelector(`meta[name="${name}"]`);
+                if (element) {
+                    element.setAttribute('content', content);
+                } else {
+                    element = document.createElement('meta');
+                    if (property) element.setAttribute('property', name);
+                    else element.setAttribute('name', name);
+                    element.setAttribute('content', content);
+                    document.head.appendChild(element);
+                }
+            };
+
+            updateMeta('title', voteMessage);
+            updateMeta('description', nominee.description || `Vote for ${nominee.name} at Sanza Music Awards!`);
+            updateMeta('og:title', voteMessage, true);
+            updateMeta('og:description', nominee.description || `Sanza Music Awards - ${nominee.genre}`, true);
+            updateMeta('og:image', nominee.image, true);
+            updateMeta('og:url', window.location.href, true);
+
+            updateMeta('twitter:title', voteMessage);
+            updateMeta('twitter:description', nominee.description || `Sanza Music Awards - ${nominee.genre}`);
+            updateMeta('twitter:image', nominee.image);
+
+            return () => {
+                document.title = originalTitle;
+                if (originalDescription) updateMeta('description', originalDescription);
+                if (originalOgTitle) updateMeta('og:title', originalOgTitle, true);
+                if (originalOgDesc) updateMeta('og:description', originalOgDesc, true);
+                if (originalOgImage) updateMeta('og:image', originalOgImage, true);
+            };
+        }
+    }, [nominee, language, t.voteForMe]);
 
     const handleShare = () => {
         const url = new URL(window.location.href);
