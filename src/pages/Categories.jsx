@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
@@ -38,8 +38,19 @@ const Categories = () => {
         }
     }[language];
 
-    const featuredCategory = categories.find(c => c.featured) || categories[0];
-    const otherCategories = categories.filter(c => !c.featured);
+    // Randomize featured category on each visit
+    const featuredCategory = useMemo(() => {
+        if (!categories || categories.length === 0) return null;
+        return categories[Math.floor(Math.random() * categories.length)];
+    }, [categories]);
+
+    if (!categories || categories.length === 0 || !featuredCategory) {
+        return <div className="min-h-screen bg-black flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-secondary border-t-transparent rounded-full animate-spin" />
+        </div>;
+    }
+
+    const otherCategories = categories.filter(c => c.id !== featuredCategory.id);
     const displayedCategories = showAll ? otherCategories : otherCategories.slice(0, 4);
 
     const getIcon = (title) => {
@@ -152,6 +163,8 @@ const Categories = () => {
                                             src={cat.image}
                                             alt={cat.title}
                                             className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                            loading="lazy"
+                                            decoding="async"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 

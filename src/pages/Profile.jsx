@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../components/ui/Button';
 import { ChevronLeft, Share2, Play, Pause, Heart, Check, Star, Music, Award, Globe } from 'lucide-react';
@@ -49,13 +49,29 @@ const Profile = () => {
     const [showAllHits, setShowAllHits] = useState(false);
     const [searchParams] = useSearchParams();
     const nomineeId = searchParams.get('nomineeId');
-    const nominee = nominees.find(n => n.id === parseInt(nomineeId)) || nominees[0];
+
+    // Randomize nominee if no ID provided
+    const nominee = useMemo(() => {
+        if (!nominees || nominees.length === 0) return null;
+        if (nomineeId) {
+            return nominees.find(n => n.id === parseInt(nomineeId)) || nominees[0];
+        }
+        return nominees[Math.floor(Math.random() * nominees.length)];
+    }, [nominees, nomineeId]);
 
     const handleShare = () => {
-        navigator.clipboard.writeText(window.location.href);
+        const url = new URL(window.location.href);
+        if (nominee) url.searchParams.set('nomineeId', nominee.id);
+        navigator.clipboard.writeText(url.toString());
         setIsCopied(true);
         setTimeout(() => setIsCopied(false), 2000);
     };
+
+    if (!nominee) {
+        return <div className="min-h-screen bg-black flex items-center justify-center">
+            <div className="w-8 h-8 border-2 border-secondary border-t-transparent rounded-full animate-spin" />
+        </div>;
+    }
 
     return (
         <div className="pb-32 relative bg-black min-h-screen text-white scrollbar-hide">
@@ -68,6 +84,7 @@ const Profile = () => {
                     src={nominee.image}
                     alt={nominee.name}
                     className="w-full h-full object-cover"
+                    fetchpriority="high"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
 
