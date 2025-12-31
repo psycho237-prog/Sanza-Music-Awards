@@ -26,7 +26,7 @@ import Card from '../components/ui/Card';
 import api from '../services/api';
 
 const Admin = () => {
-    const { nominees, getTotalVotes, useBackend } = useVotes();
+    const { nominees, getTotalVotes, useBackend, categories } = useVotes();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -175,7 +175,12 @@ const Admin = () => {
 
     if (!isAuthenticated) {
         return (
-            <div className="min-h-screen bg-black flex items-center justify-center p-6">
+            <div className="min-h-screen bg-black flex items-center justify-center p-6 relative overflow-hidden">
+                {/* Background Gradients */}
+                <div className="fixed inset-0 z-0 pointer-events-none">
+                    <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]" />
+                </div>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -195,14 +200,14 @@ const Admin = () => {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Email (optional)"
+                                placeholder="Email (facultatif)"
                                 className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 focus:outline-none focus:border-secondary transition-colors font-bold text-sm text-white mb-3"
                             />
                             <input
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Password"
+                                placeholder="Mot de passe"
                                 className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 focus:outline-none focus:border-secondary transition-colors font-bold text-sm text-white"
                             />
                             {error && <p className="text-red-500 text-[10px] font-bold mt-2 uppercase tracking-widest">{error}</p>}
@@ -217,9 +222,14 @@ const Admin = () => {
     }
 
     return (
-        <div className="min-h-screen bg-black text-white pb-32">
+        <div className="min-h-screen bg-black text-white pb-32 relative overflow-hidden">
+            {/* Background Gradients */}
+            <div className="fixed inset-0 z-0 pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[120px]" />
+            </div>
             {/* Header */}
-            <div className="p-6 pt-12 flex items-center justify-between border-b border-white/5 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
+            <div className="p-6 pt-12 flex items-center justify-between border-b border-white/5 bg-black/40 backdrop-blur-xl sticky top-0 z-50">
                 <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center border border-secondary/30">
                         <LayoutDashboard className="text-secondary" size={20} />
@@ -256,7 +266,7 @@ const Admin = () => {
                 </div>
             </div>
 
-            <div className="p-6 space-y-8">
+            <div className="p-6 space-y-8 relative z-10">
                 {/* Stats Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <Card className="p-6 border-none bg-[#1a1a1a] rounded-[2rem] relative overflow-hidden group">
@@ -410,6 +420,30 @@ const Admin = () => {
                                         {formatVotes(nominee.votes_display || nominee.votes)}
                                     </p>
                                     <p className="text-[8px] text-gray-500 font-bold uppercase tracking-widest">Total des Votes</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <h3 className="text-sm font-black tracking-tight mb-6 flex items-center gap-2">
+                        <LayoutDashboard size={16} className="text-secondary" />
+                        Gestion des Catégories ({categories.length})
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        {categories.map((category) => (
+                            <div key={category.id} className="p-4 bg-[#1a1a1a] rounded-2xl border border-white/5 flex items-center justify-between group hover:border-secondary/30 transition-all">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+                                        <img src={category.image} alt="" className="w-full h-full object-cover" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-sm font-bold truncate max-w-[150px]">{category.title}</h4>
+                                        <p className="text-[9px] text-gray-500 font-bold uppercase tracking-widest">{category.nominees}</p>
+                                    </div>
+                                </div>
+                                <div className="p-2 rounded-lg bg-white/5 text-gray-500 group-hover:text-secondary transition-colors">
+                                    <ArrowRight size={14} />
                                 </div>
                             </div>
                         ))}

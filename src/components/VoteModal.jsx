@@ -15,7 +15,13 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
     const [pollingMessage, setPollingMessage] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
-    const { incrementVote, processVote, useBackend } = useVotes();
+    const { incrementVote, processVote, useBackend, refetch, categories } = useVotes();
+
+    // Fix: Add a local state to track polling and prevent hanging
+    const [localPolling, setLocalPolling] = useState(false);
+
+    // Dynamic category title based on the new 35 categories
+    const categoryTitle = categories?.find(c => c.id === nominee?.categoryId)?.title || 'Catégorie';
 
     // Payment API Configuration (Future Integration)
     const PAYMENT_CONFIG = {
@@ -41,6 +47,9 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
         });
     };
 
+    // Dynamic category title based on the new 35 categories
+    const categoryTitle = categories?.find(c => c.id === nominee?.categoryId)?.title || 'Catégorie';
+
     const handleShare = () => {
         const url = new URL(window.location.href);
         url.searchParams.set('nomineeId', nominee.id);
@@ -54,6 +63,8 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
         setVoteCount(1);
         setPhoneNumber('');
         setIsLoading(false);
+        setIsPolling(false);
+        setLocalPolling(false);
         onClose();
     };
 
@@ -125,7 +136,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
 
                                 <h3 className="text-2xl font-bold mb-1">{nominee.name}</h3>
                                 <p className="text-secondary text-xs font-bold uppercase tracking-widest mb-4">
-                                    {categories.find(c => c.id === nominee.categoryId)?.title || 'Catégorie'}
+                                    {categoryTitle}
                                 </p>
 
                                 <Button
@@ -247,12 +258,12 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                             // 1. Initiate Payment
                                             const result = await processVote(nominee.id, voteCount, phoneNumber, paymentMethod);
 
-                                            // 2. Check if initiation was successful
                                             if (result.success) {
+                                                setIsLoading(false);
+                                                setIsPolling(true);
                                                 // If status is pending (Monetbil), start polling
                                                 if (result.status === 'pending') {
-                                                    setIsLoading(false);
-                                                    setIsPolling(true);
+                                                    setLocalPolling(true);
                                                     setPollingMessage(result.message || 'Vérifiez votre téléphone pour confirmer le paiement.');
 
                                                     // Poll for status every 3 seconds
@@ -264,12 +275,14 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                                             if (statusResult.status === 'success') {
                                                                 clearInterval(pollInterval);
                                                                 setIsPolling(false);
+                                                                setLocalPolling(false);
                                                                 // Refresh data before showing success screen
                                                                 if (refetch) await refetch();
                                                                 navigate('/vote-success', { state: { nominee, voteCount } });
                                                             } else if (statusResult.status === 'failed') {
                                                                 clearInterval(pollInterval);
                                                                 setIsPolling(false);
+                                                                setLocalPolling(false);
                                                                 setError(statusResult.error || 'Le paiement a échoué. Veuillez réessayer.');
                                                             }
                                                             // If 'pending', continue polling
@@ -281,10 +294,14 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                                     // Timeout after 2 minutes
                                                     setTimeout(() => {
                                                         clearInterval(pollInterval);
-                                                        if (isPolling) {
-                                                            setIsPolling(false);
-                                                            setError('Délai de paiement dépassé. Veuillez vérifier vos messages.');
-                                                        }
+                                                        setIsPolling(prev => {
+                                                            if (prev) {
+                                                                setError('Délai de paiement dépassé. Veuillez vérifier vos messages.');
+                                                                setLocalPolling(false);
+                                                                return false;
+                                                            }
+                                                            return prev;
+                                                        });
                                                     }, 120000);
                                                 } else {
                                                     // Immediate success (Mock mode)
@@ -317,7 +334,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                     <>
                                         TRAITEMENT EN COURS...
                                     </>
-                                ) : isPolling ? (
+                                ) : (localPolling || isPolling) ? (
                                     <>
                                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                         VÉRIFIEZ VOTRE TÉLÉPHONE...
@@ -329,7 +346,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
 
 
 
-                            {isPolling && pollingMessage && (
+                            {(isPolling || localPolling) && pollingMessage && (
                                 <div className="text-center mb-4 animate-pulse">
                                     <p className="text-xs text-yellow-500 uppercase tracking-wider mb-1">
                                         {pollingMessage}
