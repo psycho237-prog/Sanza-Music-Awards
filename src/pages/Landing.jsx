@@ -95,9 +95,7 @@ const Landing = () => {
                         <p className="text-white/90 text-[10px] xs:text-xs md:text-sm tracking-[0.25em] md:tracking-[0.5em] uppercase font-light text-center px-4 max-w-[280px] xs:max-w-none leading-loose">
                             Là où les étoiles de la musique brillent
                         </p>
-                        <p className="text-[#FDB931]/60 text-[8px] xs:text-[9px] md:text-xs tracking-[0.3em] uppercase font-light text-center px-4 mt-2 italic">
-                            Célébrons l'excellence musicale africaine
-                        </p>
+
                         <div className="flex items-center gap-3 mt-2">
                             <div className="h-[1px] w-8 bg-gradient-to-r from-transparent to-[#FDB931]" />
                             <div className="w-1 h-1 rounded-full bg-[#FDB931]" />
@@ -128,10 +126,21 @@ const Landing = () => {
                             Regarder la vidéo
                         </button>
 
-                        {/* Contact Section */}
-                        <div className="flex flex-col items-center gap-3 mt-4 w-full">
-                            <div className="h-[1px] w-16 bg-[#FDB931]/20 mb-2" />
 
+                    </motion.div>
+                </div>
+
+                {/* Contact Section - Bottom */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 }}
+                    className="w-full max-w-6xl mx-auto px-4 mt-12 pb-16 z-10"
+                >
+                    <div className="flex flex-col items-center gap-4">
+                        <div className="h-[1px] w-24 bg-[#FDB931]/20 mb-4" />
+
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
                             {/* WhatsApp Button */}
                             <a
                                 href="https://wa.me/237672274712"
@@ -139,8 +148,8 @@ const Landing = () => {
                                 rel="noopener noreferrer"
                                 className="group flex items-center gap-3 text-[#FDB931]/80 hover:text-[#25D366] transition-all duration-300 text-[10px] md:text-xs font-medium tracking-wider"
                             >
-                                <div className="w-8 h-8 rounded-full border border-[#FDB931]/50 group-hover:border-[#25D366] group-hover:scale-110 flex items-center justify-center transition-all duration-300 bg-white/5 backdrop-blur-sm">
-                                    <MessageCircle size={14} className="group-hover:fill-[#25D366]/10" />
+                                <div className="w-9 h-9 rounded-full border border-[#FDB931]/50 group-hover:border-[#25D366] group-hover:scale-110 flex items-center justify-center transition-all duration-300 bg-white/5 backdrop-blur-sm">
+                                    <MessageCircle size={16} className="group-hover:fill-[#25D366]/10" />
                                 </div>
                                 <span className="uppercase tracking-[0.2em]">Contactez-nous</span>
                             </a>
@@ -150,37 +159,14 @@ const Landing = () => {
                                 href="mailto:augerbidjang@gmail.com"
                                 className="group flex items-center gap-3 text-[#FDB931]/80 hover:text-white transition-all duration-300 text-[10px] md:text-xs font-medium tracking-wider"
                             >
-                                <div className="w-8 h-8 rounded-full border border-[#FDB931]/50 group-hover:border-white group-hover:scale-110 flex items-center justify-center transition-all duration-300 bg-white/5 backdrop-blur-sm">
-                                    <Mail size={14} />
+                                <div className="w-9 h-9 rounded-full border border-[#FDB931]/50 group-hover:border-white group-hover:scale-110 flex items-center justify-center transition-all duration-300 bg-white/5 backdrop-blur-sm">
+                                    <Mail size={16} />
                                 </div>
                                 <span className="uppercase tracking-[0.2em]">Email</span>
                             </a>
                         </div>
-                    </motion.div>
-                </div>
 
-                {/* Footer Category Preview */}
-                <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 }}
-                    className="w-full max-w-6xl mx-auto px-4 mt-4 pb-12 z-10"
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
-                        {[
-                            { title: "MEILLEUR ARTISTE", subtitle: "MASCULIN", id: 2 },
-                            { title: "MEILLEURE ARTISTE", subtitle: "FÉMININE", id: 3 },
-                            { title: "CHANSON DE", subtitle: "L'ANNÉE", id: 5 }
-                        ].map((card, idx) => (
-                            <Link key={idx} to={`/nominees?categoryId=${card.id}`}>
-                                <div className="bg-[#051040]/70 backdrop-blur-md border border-[#FDB931]/30 p-6 md:p-8 text-center group hover:bg-[#FDB931]/10 hover:border-[#FDB931] transition-all duration-500 rounded-2xl relative overflow-hidden">
-                                    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#FDB931]/50 to-transparent" />
-                                    <h3 className="text-[#FDB931]/80 text-[10px] uppercase tracking-[0.3em] mb-2 group-hover:text-white transition-colors">{card.title}</h3>
-                                    <p className="text-white text-xl md:text-2xl font-serif font-bold tracking-wider group-hover:scale-105 transition-transform duration-500">{card.subtitle}</p>
-                                    <div className="mt-4 h-[1px] w-12 mx-auto bg-[#FDB931]/20 group-hover:w-24 group-hover:bg-[#FDB931] transition-all duration-700" />
-                                </div>
-                            </Link>
-                        ))}
+                        <div className="h-[1px] w-24 bg-[#FDB931]/20 mt-4" />
                     </div>
                 </motion.div>
             </div>
