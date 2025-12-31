@@ -147,46 +147,6 @@ const Landing = () => {
 
                     </motion.div>
                 </div>
-
-                {/* Contact Section - Bottom */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 }}
-                    className="w-full max-w-6xl mx-auto px-4 mt-12 pb-16 z-10"
-                >
-                    <div className="flex flex-col items-center gap-4">
-                        <div className="h-[1px] w-24 bg-[#FDB931]/20 mb-4" />
-
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
-                            {/* WhatsApp Button */}
-                            <a
-                                href="https://wa.me/237672274712"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group flex items-center gap-3 text-[#FDB931]/80 hover:text-[#25D366] transition-all duration-300 text-[10px] md:text-xs font-medium tracking-wider"
-                            >
-                                <div className="w-9 h-9 rounded-full border border-[#FDB931]/50 group-hover:border-[#25D366] group-hover:scale-110 flex items-center justify-center transition-all duration-300 bg-white/5 backdrop-blur-sm">
-                                    <MessageCircle size={16} className="group-hover:fill-[#25D366]/10" />
-                                </div>
-                                <span className="uppercase tracking-[0.2em]">Contactez-nous</span>
-                            </a>
-
-                            {/* Email Button */}
-                            <a
-                                href="mailto:augerbidjang@gmail.com"
-                                className="group flex items-center gap-3 text-[#FDB931]/80 hover:text-white transition-all duration-300 text-[10px] md:text-xs font-medium tracking-wider"
-                            >
-                                <div className="w-9 h-9 rounded-full border border-[#FDB931]/50 group-hover:border-white group-hover:scale-110 flex items-center justify-center transition-all duration-300 bg-white/5 backdrop-blur-sm">
-                                    <Mail size={16} />
-                                </div>
-                                <span className="uppercase tracking-[0.2em]">Email</span>
-                            </a>
-                        </div>
-
-                        <div className="h-[1px] w-24 bg-[#FDB931]/20 mt-4" />
-                    </div>
-                </motion.div>
             </div>
         </div>
     );

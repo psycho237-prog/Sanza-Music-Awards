@@ -45,7 +45,7 @@ const Categories = () => {
                         <ChevronLeft size={24} />
                     </Button>
                 </Link>
-                <h2 className="text-sm font-bold tracking-widest uppercase">Award Categories</h2>
+                <h2 className="text-sm font-bold tracking-widest uppercase">Catégories de Prix</h2>
                 <Button
                     variant="ghost"
                     className="p-2 rounded-full hover:bg-white/5"
@@ -74,7 +74,7 @@ const Categories = () => {
 
                         <div className="absolute top-4 right-4">
                             <span className="text-[9px] font-bold bg-secondary text-white px-3 py-1 rounded-full uppercase tracking-widest">
-                                ● VOTING OPEN
+                                ● VOTE OUVERT
                             </span>
                         </div>
 

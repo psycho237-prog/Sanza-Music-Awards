@@ -34,14 +34,14 @@ const Login = () => {
                     >
                         <Star className="text-white" size={40} fill="currentColor" />
                     </motion.div>
-                    <h1 className="text-4xl font-black mb-3 tracking-tight">Amplify The Rhythm</h1>
-                    <p className="text-gray-400 text-sm font-medium">Log in to cast your vote for the next star</p>
+                    <h1 className="text-4xl font-black mb-3 tracking-tight">Vibrez au Rythme</h1>
+                    <p className="text-gray-400 text-sm font-medium">Connectez-vous pour voter pour la prochaine star</p>
                 </div>
 
                 {/* Tabs */}
                 <div className="flex bg-white/5 p-1.5 rounded-[2rem] mb-10 border border-white/5">
-                    <button className="flex-1 py-3.5 rounded-[1.5rem] bg-secondary text-white font-bold text-xs uppercase tracking-widest shadow-xl transition-all">Login</button>
-                    <button className="flex-1 py-3.5 rounded-[1.5rem] text-gray-500 font-bold text-xs uppercase tracking-widest hover:text-gray-300 transition-all">Sign Up</button>
+                    <button className="flex-1 py-3.5 rounded-[1.5rem] bg-secondary text-white font-bold text-xs uppercase tracking-widest shadow-xl transition-all">Connexion</button>
+                    <button className="flex-1 py-3.5 rounded-[1.5rem] text-gray-500 font-bold text-xs uppercase tracking-widest hover:text-gray-300 transition-all">S'inscrire</button>
                 </div>
 
                 {/* Form */}
@@ -50,7 +50,7 @@ const Login = () => {
                         <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-secondary transition-colors" size={20} />
                         <input
                             type="email"
-                            placeholder="Email or Phone Number"
+                            placeholder="Email ou Numéro de Téléphone"
                             className="w-full bg-white/5 border border-white/10 rounded-[1.5rem] py-5 pl-14 pr-6 text-white placeholder:text-gray-600 focus:outline-none focus:border-secondary focus:bg-white/[0.08] transition-all font-bold text-sm"
                         />
                     </div>
@@ -58,18 +58,18 @@ const Login = () => {
                         <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-secondary transition-colors" size={20} />
                         <input
                             type="password"
-                            placeholder="Password"
+                            placeholder="Mot de passe"
                             className="w-full bg-white/5 border border-white/10 rounded-[1.5rem] py-5 pl-14 pr-6 text-white placeholder:text-gray-600 focus:outline-none focus:border-secondary focus:bg-white/[0.08] transition-all font-bold text-sm"
                         />
                     </div>
                     <div className="text-right px-2">
-                        <span className="text-[10px] font-bold text-secondary uppercase tracking-widest cursor-pointer hover:underline">Forgot Password?</span>
+                        <span className="text-[10px] font-bold text-secondary uppercase tracking-widest cursor-pointer hover:underline">Mot de passe oublié ?</span>
                     </div>
                 </div>
 
                 <Link to="/categories">
                     <Button className="w-full py-5 text-sm font-black rounded-[1.5rem] bg-secondary hover:bg-secondary/90 text-white border-none uppercase tracking-[0.2em] shadow-[0_15px_40px_rgba(217,70,239,0.3)] group">
-                        Start Voting <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                        Commencer à Voter <ArrowRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" size={18} />
                     </Button>
                 </Link>
 
@@ -78,7 +78,7 @@ const Login = () => {
                         <div className="w-full border-t border-white/10"></div>
                     </div>
                     <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-[0.2em]">
-                        <span className="px-4 bg-black text-gray-600">Or continue with</span>
+                        <span className="px-4 bg-black text-gray-600">Ou continuer avec</span>
                     </div>
                 </div>
 
@@ -95,8 +95,8 @@ const Login = () => {
                 </div>
 
                 <p className="text-center text-[9px] font-bold text-gray-600 mt-12 uppercase tracking-widest leading-relaxed">
-                    By continuing, you agree to our <br />
-                    <span className="text-gray-400 hover:text-white cursor-pointer">Terms of Service</span> & <span className="text-gray-400 hover:text-white cursor-pointer">Privacy Policy</span>
+                    En continuant, vous acceptez nos <br />
+                    <span className="text-gray-400 hover:text-white cursor-pointer">Conditions d'utilisation</span> & <span className="text-gray-400 hover:text-white cursor-pointer">Politique de confidentialité</span>
                 </p>
             </motion.div>
         </div>

@@ -64,7 +64,7 @@ const Profile = () => {
                 >
                     <div className="w-20 h-20 rounded-full bg-secondary flex flex-col items-center justify-center shadow-[0_0_30px_rgba(217,70,239,0.6)] border-4 border-black/20">
                         <Award size={20} className="mb-1" />
-                        <span className="text-[9px] font-bold uppercase tracking-tighter leading-none">Rank</span>
+                        <span className="text-[9px] font-bold uppercase tracking-tighter leading-none">Rang</span>
                         <span className="text-2xl font-black leading-none">{nominee.rank}</span>
                     </div>
                 </motion.div>
@@ -94,32 +94,32 @@ const Profile = () => {
                             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                                 <Star size={40} />
                             </div>
-                            <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">Total Votes</p>
+                            <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">Total des Votes</p>
                             <p className="text-3xl font-black text-white">{nominee.votes}</p>
                             <span className="text-[10px] text-green-400 font-bold flex items-center gap-1 mt-1">
-                                <Check size={10} /> +12% today
+                                <Check size={10} /> +12% aujourd'hui
                             </span>
                         </div>
                         <div className="bg-[#1a1a1a] rounded-[2rem] p-6 border border-white/5 shadow-2xl relative overflow-hidden group">
                             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                                 <Music size={40} />
                             </div>
-                            <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">Listeners</p>
+                            <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">Auditeurs</p>
                             <p className="text-3xl font-black text-white">{nominee.listeners}</p>
-                            <span className="text-[10px] text-gray-500 font-bold mt-1 block">Monthly average</span>
+                            <span className="text-[10px] text-gray-500 font-bold mt-1 block">Moyenne mensuelle</span>
                         </div>
                     </div>
 
                     {/* Bio */}
                     <div className="mb-12">
-                        <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4">Biography</h3>
+                        <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4">Biographie</h3>
                         <p className="text-sm text-gray-400 leading-relaxed font-medium">
                             {isBioExpanded ? nominee.bio : `${nominee.bio.slice(0, 100)}...`}
                             <span
                                 onClick={() => setIsBioExpanded(!isBioExpanded)}
                                 className="text-secondary ml-2 font-bold cursor-pointer hover:underline"
                             >
-                                {isBioExpanded ? 'Read less' : 'Read more'}
+                                {isBioExpanded ? 'Lire moins' : 'Lire plus'}
                             </span>
                         </p>
                     </div>
@@ -127,12 +127,12 @@ const Profile = () => {
                     {/* Top Hits */}
                     <div className="mb-12">
                         <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Top Hits</h3>
+                            <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Meilleurs Titres</h3>
                             <span
                                 onClick={() => setShowAllHits(!showAllHits)}
                                 className="text-[10px] text-secondary font-bold uppercase tracking-widest cursor-pointer hover:underline"
                             >
-                                {showAllHits ? 'Show less' : 'See all'}
+                                {showAllHits ? 'Voir moins' : 'Tout voir'}
                             </span>
                         </div>
 
@@ -179,7 +179,7 @@ const Profile = () => {
                     className="w-full py-6 text-sm tracking-[0.2em] shadow-[0_20px_50px_rgba(217,70,239,0.4)] font-black rounded-[2rem] bg-secondary hover:bg-secondary/90 text-white border-none uppercase"
                     onClick={() => setIsVoteModalOpen(true)}
                 >
-                    VOTE FOR {nominee.name.toUpperCase()}
+                    VOTER POUR {nominee.name.toUpperCase()}
                 </Button>
             </motion.div>
 

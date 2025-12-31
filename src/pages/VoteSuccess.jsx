@@ -45,7 +45,7 @@ const VoteSuccess = () => {
                 transition={{ delay: 0.2 }}
                 className="text-4xl font-bold mb-4"
             >
-                Voice Heard!
+                Voix entendue !
             </motion.h1>
 
             <motion.p
@@ -54,7 +54,7 @@ const VoteSuccess = () => {
                 transition={{ delay: 0.3 }}
                 className="text-gray-400 mb-12 max-w-xs"
             >
-                Thanks for supporting African talent. Your {voteCount} {voteCount > 1 ? 'votes have' : 'vote has'} been successfully cast.
+                Merci de soutenir les talents africains. Votre vote a été enregistré avec succès.
             </motion.p>
 
             {/* Voted Card Preview */}
@@ -70,7 +70,7 @@ const VoteSuccess = () => {
                     className="w-full h-48 object-cover rounded-2xl mb-4"
                 />
                 <h3 className="text-xl font-bold">{nominee.name}</h3>
-                <p className="text-sm text-gray-400">{getCategoryTitle(nominee.categoryId)} Nominee</p>
+                <p className="text-sm text-gray-400">Nommé dans {getCategoryTitle(nominee.categoryId)}</p>
             </motion.div>
 
             <motion.div
@@ -81,13 +81,13 @@ const VoteSuccess = () => {
             >
                 <Link to="/categories">
                     <Button className="w-full py-4">
-                        Vote Another Category
+                        Voter dans une autre catégorie
                     </Button>
                 </Link>
 
                 <Button variant="ghost" className="w-full gap-2">
                     <Share2 size={18} />
-                    Share Result
+                    Partager le résultat
                 </Button>
             </motion.div>
         </div>

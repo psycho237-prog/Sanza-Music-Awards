@@ -9,10 +9,10 @@ const Layout = () => {
     const { isNavbarVisible } = useLayout();
 
     const navItems = [
-        { icon: Home, label: 'Home', path: '/' },
-        { icon: LayoutGrid, label: 'Categories', path: '/categories' },
-        { icon: SanzaTrophy, label: 'Results', path: '/results' },
-        { icon: User, label: 'Profile', path: '/profile' },
+        { icon: Home, label: 'Accueil', path: '/' },
+        { icon: LayoutGrid, label: 'Catégories', path: '/categories' },
+        { icon: SanzaTrophy, label: 'Résultats', path: '/results' },
+        { icon: User, label: 'Profil', path: '/profile' },
     ];
 
     return (

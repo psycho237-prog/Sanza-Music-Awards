@@ -134,11 +134,11 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                 >
                                     {isCopied ? (
                                         <>
-                                            <Check size={12} /> Link Copied!
+                                            <Check size={12} /> Lien copié !
                                         </>
                                     ) : (
                                         <>
-                                            <Share2 size={12} /> Share profile
+                                            <Share2 size={12} /> Partager le profil
                                         </>
                                     )}
                                 </Button>
@@ -146,7 +146,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
 
                             {/* Vote Counter */}
                             <div className="bg-white/5 rounded-3xl p-6 mb-6 border border-white/5">
-                                <p className="text-center text-gray-500 text-[10px] mb-4 uppercase tracking-widest font-bold">Number of Votes</p>
+                                <p className="text-center text-gray-500 text-[10px] mb-4 uppercase tracking-widest font-bold">Nombre de Votes</p>
                                 <div className="flex items-center justify-center gap-8">
                                     <button
                                         onClick={() => handleVoteChange(-1)}
@@ -184,7 +184,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
 
                             {/* Payment Methods */}
                             <div className="space-y-4 mb-8">
-                                <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-4">Payment Method</p>
+                                <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest mb-4">Moyen de Paiement</p>
                                 <div className="grid grid-cols-2 gap-4">
                                     <button
                                         onClick={() => setPaymentMethod('MOMO')}
@@ -215,7 +215,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold text-sm">+237</span>
                                     <input
                                         type="tel"
-                                        placeholder="Phone number"
+                                        placeholder="Numéro de téléphone"
                                         value={phoneNumber}
                                         maxLength={9}
                                         onChange={(e) => {
@@ -251,7 +251,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                                 if (result.status === 'pending') {
                                                     setIsLoading(false);
                                                     setIsPolling(true);
-                                                    setPollingMessage(result.message || 'Check your phone to confirm payment.');
+                                                    setPollingMessage(result.message || 'Vérifiez votre téléphone pour confirmer le paiement.');
 
                                                     // Poll for status every 3 seconds
                                                     const pollInterval = setInterval(async () => {
@@ -268,7 +268,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                                             } else if (statusResult.status === 'failed') {
                                                                 clearInterval(pollInterval);
                                                                 setIsPolling(false);
-                                                                setError(statusResult.error || 'Payment failed. Please try again.');
+                                                                setError(statusResult.error || 'Le paiement a échoué. Veuillez réessayer.');
                                                             }
                                                             // If 'pending', continue polling
                                                         } catch (e) {
@@ -281,7 +281,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                                         clearInterval(pollInterval);
                                                         if (isPolling) {
                                                             setIsPolling(false);
-                                                            setError('Payment timeout. Please check your messages.');
+                                                            setError('Délai de paiement dépassé. Veuillez vérifier vos messages.');
                                                         }
                                                     }, 120000);
                                                 } else {
@@ -290,7 +290,7 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                                 }
                                             } else {
                                                 // Initiation failed
-                                                setError(result.error || result.message || 'Payment failed. Please try again.');
+                                                setError(result.error || result.message || 'Le paiement a échoué. Veuillez réessayer.');
                                                 setIsLoading(false);
                                             }
                                         } else {
@@ -300,29 +300,28 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                                                 incrementVote(nominee.id, voteCount, totalPrice, paymentMethod);
                                                 navigate('/vote-success', { state: { nominee, voteCount } });
                                             } else {
-                                                setError('Payment failed. Please try again.');
+                                                setError('Le paiement a échoué. Veuillez réessayer.');
                                                 setIsLoading(false);
                                             }
                                         }
                                     } catch (err) {
                                         console.error('Payment error:', err);
-                                        setError(err.message || 'Transaction error. Please check your balance and try again.');
+                                        setError(err.message || 'Erreur de transaction. Veuillez vérifier votre solde et réessayer.');
                                         setIsLoading(false);
                                     }
                                 }}
                             >
                                 {isLoading ? (
                                     <>
-                                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                        PROCESSING...
+                                        TRAITEMENT EN COURS...
                                     </>
                                 ) : isPolling ? (
                                     <>
                                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                        CHECK YOUR PHONE...
+                                        VÉRIFIEZ VOTRE TÉLÉPHONE...
                                     </>
                                 ) : (
-                                    `VOTE NOW • ${totalPrice} XAF`
+                                    `VOTER MAINTENANT • ${totalPrice} XAF`
                                 )}
                             </Button>
 
@@ -346,13 +345,13 @@ const VoteModal = ({ isOpen, onClose, nominee }) => {
                             )}
 
                             <div className="flex items-center justify-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest">
-                                <Lock size={12} /> Secure Payment
+                                <Lock size={12} /> Paiement Sécurisé
                             </div>
                         </div>
-                    </motion.div>
-                </div>
+                    </motion.div >
+                </div >
             )}
-        </AnimatePresence>
+        </AnimatePresence >
     );
 };
 

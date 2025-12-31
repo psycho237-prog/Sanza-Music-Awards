@@ -43,7 +43,7 @@ const Results = () => {
                         <ChevronLeft size={24} />
                     </Button>
                 </Link>
-                <h2 className="text-sm font-bold tracking-widest uppercase">Live Results</h2>
+                <h2 className="text-sm font-bold tracking-widest uppercase">Résultats en Direct</h2>
                 <Button
                     variant="ghost"
                     className="p-2 rounded-full hover:bg-white/5"
@@ -72,11 +72,11 @@ const Results = () => {
                         <SanzaTrophy size={60} />
                     </div>
                     <div className="relative z-10">
-                        <h3 className="text-sm font-bold text-secondary uppercase tracking-[0.2em] mb-2">Total Votes Cast</h3>
+                        <h3 className="text-sm font-bold text-secondary uppercase tracking-[0.2em] mb-2">Total des Votes Exprimés</h3>
                         <p className="text-5xl font-black tracking-tighter">{getTotalVotes()}</p>
                         <p className="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-widest flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-                            Updating in real-time • Next update in 4m
+                            Mise à jour en temps réel • Prochaine mise à jour dans 4m
                         </p>
                     </div>
                 </div>
@@ -86,22 +86,19 @@ const Results = () => {
                     <div className="flex flex-col gap-4 mb-6">
                         <div className="flex justify-between items-center">
                             <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">
-                                {selectedCategoryId === 'global' ? 'Global Standings' : getCategoryTitle(parseInt(selectedCategoryId))}
+                                {selectedCategoryId === 'global' ? 'Classement Général' : getCategoryTitle(parseInt(selectedCategoryId))}
                             </h3>
                             <span className="text-[10px] text-secondary font-bold uppercase tracking-widest flex items-center gap-1">
-                                <TrendingUp size={12} /> Live Results
+                                <TrendingUp size={12} /> Résultats en Direct
                             </span>
                         </div>
 
                         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
                             <button
                                 onClick={() => setSelectedCategoryId('global')}
-                                className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-all border ${selectedCategoryId === 'global'
-                                    ? 'bg-secondary border-secondary text-white'
-                                    : 'bg-white/5 border-white/10 text-gray-400'
-                                    }`}
-                            >
-                                Global
+                                className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest whitespace-nowrap border ${selectedCategoryId === 'global'
+                                    ? 'bg-secondary border-secondary text-white' : 'bg-transparent border-white/10 text-gray-500'} transition-all`}>
+                                GLOBAL
                             </button>
                             {categories.map(cat => (
                                 <button
@@ -162,7 +159,7 @@ const Results = () => {
 
                                         <div className="text-right">
                                             <p className="text-sm font-bold">{nominee.votes}</p>
-                                            <p className="text-[9px] text-gray-500 uppercase font-bold tracking-widest">Votes</p>
+                                            <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mb-1">Position Actuelle</p>
                                         </div>
                                     </Card>
                                 </motion.div>
@@ -171,9 +168,9 @@ const Results = () => {
                     </div>
                 </div>
 
-                {/* Past Winners */}
-                <div>
-                    <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-6">Hall of Fame</h3>
+                {/* Anciens Gagnants */}
+                <div className="mb-12">
+                    <h3 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-6">Anciens Gagnants</h3>
                     <div className="grid grid-cols-2 gap-4">
                         {nominees.filter(n => n.id <= 2).map((winner, index) => (
                             <motion.div
@@ -193,7 +190,7 @@ const Results = () => {
                                     <div className="absolute bottom-4 left-4 right-4">
                                         <p className="text-[8px] text-secondary font-bold uppercase tracking-widest mb-1">{getCategoryTitle(winner.categoryId)}</p>
                                         <h4 className="font-bold text-xs mb-1">{winner.name}</h4>
-                                        <p className="text-[8px] text-gray-400 font-bold uppercase tracking-widest">2025 Winner</p>
+                                        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">{winner.category} • {winner.year}</p>
                                     </div>
                                 </Card>
                             </motion.div>

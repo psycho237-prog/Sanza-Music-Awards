@@ -69,11 +69,11 @@ const Nominees = () => {
             <div className="px-6">
                 <div className="mb-8">
                     <h2 className="text-3xl font-bold mb-2">
-                        Cast your vote for the <br />
-                        <span className="text-secondary">2026 winner.</span>
+                        Votez pour le <br />
+                        <span className="text-secondary">gagnant 2026.</span>
                     </h2>
                     <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest">
-                        Voting closes in 3 days. You have 5 votes remaining today.
+                        Le vote se termine dans 3 jours. Il vous reste 5 votes aujourd'hui.
                     </p>
                 </div>
 
@@ -88,7 +88,7 @@ const Nominees = () => {
                                 : 'bg-white/5 text-gray-400 hover:bg-white/10'
                                 }`}
                         >
-                            {tab}
+                            {tab === 'All' ? 'Tous' : tab === 'Trending' ? 'Tendances' : tab === 'Newest' ? 'Nouveaux' : tab}
                         </button>
                     ))}
                 </div>
@@ -154,7 +154,7 @@ const Nominees = () => {
                                         className="w-full py-4 bg-secondary hover:bg-secondary/90 text-white border-none rounded-full font-bold flex items-center justify-center gap-2 text-xs uppercase tracking-widest shadow-[0_10px_20px_rgba(217,70,239,0.2)]"
                                         onClick={() => handleVoteClick(nominee)}
                                     >
-                                        <User size={16} fill="currentColor" /> VOTE
+                                        <User size={16} fill="currentColor" /> VOTER
                                     </Button>
                                 </div>
                             </Card>

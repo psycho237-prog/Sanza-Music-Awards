@@ -116,7 +116,7 @@ const Admin = () => {
                 setError('');
                 fetchDashboardData();
             } else {
-                setError('Invalid credentials');
+                setError('Identifiants invalides');
             }
         } catch (err) {
             // Fallback to hardcoded password for offline mode
@@ -124,7 +124,7 @@ const Admin = () => {
                 setIsAuthenticated(true);
                 setError('');
             } else {
-                setError(err.message || 'Login failed');
+                setError(err.message || 'Échec de la connexion');
             }
         } finally {
             setIsLoading(false);
@@ -185,8 +185,8 @@ const Admin = () => {
                         <div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center border border-secondary/30 mb-4">
                             <Lock className="text-secondary" size={32} />
                         </div>
-                        <h1 className="text-2xl font-black tracking-tight mb-2">Admin Access</h1>
-                        <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Enter credentials to continue</p>
+                        <h1 className="text-2xl font-black tracking-tight mb-2">Accès Administrateur</h1>
+                        <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Entrez vos identifiants pour continuer</p>
                     </div>
 
                     <form onSubmit={handleLogin} className="space-y-4">
@@ -208,7 +208,7 @@ const Admin = () => {
                             {error && <p className="text-red-500 text-[10px] font-bold mt-2 uppercase tracking-widest">{error}</p>}
                         </div>
                         <Button type="submit" className="w-full py-4 rounded-2xl font-bold" disabled={isLoading}>
-                            {isLoading ? 'Logging in...' : 'Login to Dashboard'}
+                            {isLoading ? 'Connexion...' : 'Se connecter au Tableau de bord'}
                         </Button>
                     </form>
                 </motion.div>
@@ -225,7 +225,7 @@ const Admin = () => {
                         <LayoutDashboard className="text-secondary" size={20} />
                     </div>
                     <div>
-                        <h1 className="text-lg font-black tracking-tight">Admin Dashboard</h1>
+                        <h1 className="text-lg font-black tracking-tight">Tableau de bord Admin</h1>
                         <div className="flex items-center gap-2 text-[10px] text-gray-500 font-bold uppercase tracking-widest">
                             <Clock size={10} />
                             {currentTime.toLocaleTimeString()} • {currentTime.toLocaleDateString()}
@@ -246,11 +246,11 @@ const Admin = () => {
                         className="text-xs font-bold uppercase tracking-widest"
                         onClick={handleLogout}
                     >
-                        Logout
+                        Déconnexion
                     </Button>
                     <Link to="/">
                         <Button variant="ghost" className="text-xs font-bold uppercase tracking-widest">
-                            Exit
+                            Quitter
                         </Button>
                     </Link>
                 </div>
@@ -263,7 +263,7 @@ const Admin = () => {
                         <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
                             <Activity size={100} />
                         </div>
-                        <p className="text-[10px] text-secondary font-bold uppercase tracking-widest mb-2">Total Votes</p>
+                        <p className="text-[10px] text-secondary font-bold uppercase tracking-widest mb-2">Total des Votes</p>
                         <h2 className="text-3xl font-black tracking-tighter">
                             {stats ? formatVotes(stats.totalVotes) : getTotalVotes()}
                         </h2>
@@ -272,7 +272,7 @@ const Admin = () => {
                         <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
                             <DollarSign size={100} />
                         </div>
-                        <p className="text-[10px] text-green-500 font-bold uppercase tracking-widest mb-2">Revenue (XAF)</p>
+                        <p className="text-[10px] text-green-500 font-bold uppercase tracking-widest mb-2">Revenus (XAF)</p>
                         <h2 className="text-3xl font-black tracking-tighter">
                             {stats ? stats.totalRevenue.toLocaleString() : '0'}
                         </h2>
@@ -290,7 +290,7 @@ const Admin = () => {
                         <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
                             <TrendingUp size={100} />
                         </div>
-                        <p className="text-[10px] text-purple-500 font-bold uppercase tracking-widest mb-2">Success Rate</p>
+                        <p className="text-[10px] text-purple-500 font-bold uppercase tracking-widest mb-2">Taux de Réussite</p>
                         <h2 className="text-3xl font-black tracking-tighter">
                             {stats ? `${stats.successRate}%` : '0%'}
                         </h2>
@@ -303,21 +303,21 @@ const Admin = () => {
                         <div className="p-4 bg-green-500/10 rounded-2xl border border-green-500/20 flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <CheckCircle className="text-green-500" size={20} />
-                                <span className="text-sm font-bold">Success</span>
+                                <span className="text-sm font-bold">Succès</span>
                             </div>
                             <span className="text-2xl font-black text-green-500">{stats.successfulTransactions}</span>
                         </div>
                         <div className="p-4 bg-yellow-500/10 rounded-2xl border border-yellow-500/20 flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <AlertCircle className="text-yellow-500" size={20} />
-                                <span className="text-sm font-bold">Pending</span>
+                                <span className="text-sm font-bold">En attente</span>
                             </div>
                             <span className="text-2xl font-black text-yellow-500">{stats.pendingTransactions}</span>
                         </div>
                         <div className="p-4 bg-red-500/10 rounded-2xl border border-red-500/20 flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <XCircle className="text-red-500" size={20} />
-                                <span className="text-sm font-bold">Failed</span>
+                                <span className="text-sm font-bold">Échoué</span>
                             </div>
                             <span className="text-2xl font-black text-red-500">{stats.failedTransactions}</span>
                         </div>
@@ -329,7 +329,7 @@ const Admin = () => {
                     <div className="flex items-center justify-between mb-6">
                         <h3 className="text-sm font-black tracking-tight flex items-center gap-2">
                             <Activity size={16} className="text-secondary" />
-                            Live Transactions
+                            Transactions en Direct
                         </h3>
                         <div className="flex items-center gap-4">
                             <select
@@ -337,14 +337,14 @@ const Admin = () => {
                                 onChange={(e) => setStatusFilter(e.target.value)}
                                 className="bg-white/5 border border-white/10 rounded-xl py-2 px-4 text-xs font-bold uppercase"
                             >
-                                <option value="all">All Status</option>
-                                <option value="success">Success</option>
-                                <option value="pending">Pending</option>
-                                <option value="failed">Failed</option>
+                                <option value="all">Tous les Statuts</option>
+                                <option value="success">Succès</option>
+                                <option value="pending">En attente</option>
+                                <option value="failed">Échoué</option>
                             </select>
                             <div className="flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Real-time</span>
+                                <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Temps réel</span>
                             </div>
                         </div>
                     </div>
@@ -353,7 +353,7 @@ const Admin = () => {
                         {filteredTransactions.length === 0 ? (
                             <div className="p-12 text-center bg-[#1a1a1a] rounded-[2rem] border border-white/5">
                                 <Clock size={48} className="mx-auto mb-4 text-gray-700" />
-                                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">No transactions yet</p>
+                                <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">Aucune transaction pour le moment</p>
                             </div>
                         ) : (
                             filteredTransactions.map((tx, index) => (
@@ -394,7 +394,7 @@ const Admin = () => {
                 <div>
                     <h3 className="text-sm font-black tracking-tight mb-6 flex items-center gap-2">
                         <SanzaTrophy size={8} />
-                        Top Nominees
+                        Top Nommés
                     </h3>
                     <div className="grid grid-cols-1 gap-3">
                         {(topNominees.length > 0 ? topNominees : nominees.slice(0, 5)).map((nominee, index) => (
@@ -409,7 +409,7 @@ const Admin = () => {
                                     <p className="text-sm font-black text-white">
                                         {formatVotes(nominee.votes_display || nominee.votes)}
                                     </p>
-                                    <p className="text-[8px] text-gray-500 font-bold uppercase tracking-widest">Total Votes</p>
+                                    <p className="text-[8px] text-gray-500 font-bold uppercase tracking-widest">Total des Votes</p>
                                 </div>
                             </div>
                         ))}
