@@ -41,9 +41,9 @@ const Landing = () => {
                         <motion.div
                             animate={{ y: [-4, 4, -4] }}
                             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-                            className="w-20 md:w-32 lg:w-40 flex-shrink-0"
+                            className="h-[80px] md:h-[180px] lg:h-[240px] flex-shrink-0"
                         >
-                            <SanzaTrophy className="w-full h-auto drop-shadow-[0_0_15px_rgba(253,185,49,0.3)]" />
+                            <SanzaTrophy className="h-full w-auto drop-shadow-[0_0_25px_rgba(253,185,49,0.5)]" />
                         </motion.div>
 
                         {/* Text Block */}
