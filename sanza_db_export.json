@@ -1,0 +1,271 @@
+{
+    "categories": {
+        "cat_01": {
+            "title": "Album of The Year",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1514525253361-bee871871771?q=80&w=1000",
+            "featured": true
+        },
+        "cat_02": {
+            "title": "Song of The Year",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000",
+            "featured": false
+        },
+        "cat_03": {
+            "title": "Record of The Year",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000",
+            "featured": false
+        },
+        "cat_04": {
+            "title": "Best New Artist",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1000",
+            "featured": false
+        },
+        "cat_05": {
+            "title": "Best Music Video",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000",
+            "featured": false
+        },
+        "cat_06": {
+            "title": "Producer of The Year",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000",
+            "featured": false
+        },
+        "cat_07": {
+            "title": "Best Choregraphy in a Music Video",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1000",
+            "featured": false
+        },
+        "cat_08": {
+            "title": "Best Art Direction in a Music Video",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000",
+            "featured": false
+        },
+        "cat_09": {
+            "title": "Best Visual Effects in a Music Video",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000",
+            "featured": false
+        },
+        "cat_10": {
+            "title": "Best Rap Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000",
+            "featured": false
+        },
+        "cat_11": {
+            "title": "Best Rap Performance",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1000",
+            "featured": false
+        },
+        "cat_12": {
+            "title": "Best Rap/Sung Collab",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000",
+            "featured": false
+        },
+        "cat_13": {
+            "title": "Best Rap Album/Ep",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1514525253361-bee871871771?q=80&w=1000",
+            "featured": false
+        },
+        "cat_14": {
+            "title": "Best Afropop Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1000",
+            "featured": false
+        },
+        "cat_15": {
+            "title": "Best Afropop Song by Duo or Group",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1000",
+            "featured": false
+        },
+        "cat_16": {
+            "title": "Best Afropop Album/Ep",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1514525253361-bee871871771?q=80&w=1000",
+            "featured": false
+        },
+        "cat_17": {
+            "title": "Best Bikutsi Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000",
+            "featured": false
+        },
+        "cat_18": {
+            "title": "Best Bikutsi Song by Duo or Group",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1000",
+            "featured": false
+        },
+        "cat_19": {
+            "title": "Best Bikutsi Album/Ep",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1514525253361-bee871871771?q=80&w=1000",
+            "featured": false
+        },
+        "cat_20": {
+            "title": "Best Mbole Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000",
+            "featured": false
+        },
+        "cat_21": {
+            "title": "Best Mbole Song by Duo or Group",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1000",
+            "featured": false
+        },
+        "cat_22": {
+            "title": "Best Makossa Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000",
+            "featured": false
+        },
+        "cat_23": {
+            "title": "Best Makossa Song by Duo or Group",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1000",
+            "featured": false
+        },
+        "cat_24": {
+            "title": "Best Makossa Album/Ep",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1514525253361-bee871871771?q=80&w=1000",
+            "featured": false
+        },
+        "cat_25": {
+            "title": "Best Traditional Music Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000",
+            "featured": false
+        },
+        "cat_26": {
+            "title": "Best Kpalum Music Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000",
+            "featured": false
+        },
+        "cat_27": {
+            "title": "Best Bendskin Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000",
+            "featured": false
+        },
+        "cat_28": {
+            "title": "Best Gospel Music Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000",
+            "featured": false
+        },
+        "cat_29": {
+            "title": "Best Gospel Music Album/Ep",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1514525253361-bee871871771?q=80&w=1000",
+            "featured": false
+        },
+        "cat_30": {
+            "title": "Best Contemporary Music Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000",
+            "featured": false
+        },
+        "cat_31": {
+            "title": "Best Contemporary Music Album/Ep",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1514525253361-bee871871771?q=80&w=1000",
+            "featured": false
+        },
+        "cat_32": {
+            "title": "Best Soundtrack for Visual Media",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000",
+            "featured": false
+        },
+        "cat_33": {
+            "title": "Best Music Film",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000",
+            "featured": false
+        },
+        "cat_34": {
+            "title": "Best Album Cover",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=1000",
+            "featured": false
+        },
+        "cat_35": {
+            "title": "Best Songwriter of The Year",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000",
+            "featured": false
+        },
+        "cat_36": {
+            "title": "Best Diaspora Artist",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1526218626217-dc65a29bb444?q=80&w=1000",
+            "featured": false
+        },
+        "cat_37": {
+            "title": "Best Reggae/Dance hall song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?q=80&w=1000",
+            "featured": false
+        },
+        "cat_38": {
+            "title": "Best Makune Song",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000",
+            "featured": false
+        },
+        "cat_39": {
+            "title": "Best Live Performance",
+            "nominees_count": "0 Nominees",
+            "image_url": "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1000",
+            "featured": false
+        }
+    },
+    "nominees": {
+        "nom_01": {
+            "category_id": "cat_01",
+            "name": "Artist 1",
+            "song": "Album Title 1",
+            "votes": 0,
+            "image_url": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?q=80&w=1000",
+            "tag": "Nominated",
+            "description": "Short description of the work.",
+            "genre": "Genre",
+            "country": "\ud83c\udde8\ud83c\uddf2 Cameroon"
+        },
+        "nom_02": {
+            "category_id": "cat_01",
+            "name": "Artist 2",
+            "song": "Album Title 2",
+            "votes": 0,
+            "image_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000",
+            "tag": "Nominated",
+            "description": "Short description of the work.",
+            "genre": "Genre",
+            "country": "\ud83c\udde8\ud83c\uddf2 Cameroon"
+        }
+    },
+    "stats": {
+        "totalVotes": 0,
+        "totalRevenue": 0,
+        "totalTransactions": 0,
+        "successfulTransactions": 0,
+        "pendingTransactions": 0,
+        "failedTransactions": 0,
+        "successRate": 100
+    }
+}

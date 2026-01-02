@@ -37,3 +37,4 @@ A frontend-only React website for an African Singing Awards voting platform.
 - This is a frontend prototype. No backend is connected.
 - All data is mocked.
 # Sanza-Music-Awards
+# Sanza-Music-Awards
