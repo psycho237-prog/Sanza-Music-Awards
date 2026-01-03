@@ -5,6 +5,9 @@ import Layout from '@/components/layout/Layout';
 export const metadata = {
     title: 'African Singing Awards',
     description: 'Premium voting platform',
+    appleWebApp: {
+        title: 'Sanza Music Awards',
+    },
 };
 
 export default function RootLayout({

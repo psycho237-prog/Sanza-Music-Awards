@@ -9,6 +9,7 @@ import SanzaTrophy from '@/components/ui/SanzaTrophy';
 import Link from 'next/link';
 import { useVotes } from '@/components/context/VoteContext';
 import SearchOverlay from '@/components/SearchOverlay';
+import Image from 'next/image';
 
 const Categories = () => {
     const { categories, nominees, language, switchLanguage, isLoading } = useVotes();
@@ -123,10 +124,11 @@ const Categories = () => {
             <div className="px-6 space-y-6">
                 <Link href={`/nominees?categoryId=${featuredCategory.id}`}>
                     <Card className="relative h-56 overflow-hidden group border-none p-0 rounded-[2.5rem]">
-                        <img
+                        <Image
                             src={featuredCategory.image}
                             alt={featuredCategory.title}
-                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
@@ -177,11 +179,11 @@ const Categories = () => {
                                     transition={{ delay: index * 0.1 }}
                                 >
                                     <Card className="relative h-44 overflow-hidden group border-none p-0 rounded-[2rem]">
-                                        <img
+                                        <Image
                                             src={cat.image}
                                             alt={cat.title}
-                                            className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                            loading="lazy"
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 

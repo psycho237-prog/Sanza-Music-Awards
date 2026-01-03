@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Share2, Minus, Plus, Lock, Smartphone, CreditCard, Check } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Button from '@/components/ui/Button';
+import Image from 'next/image';
 import { useVotes } from '@/components/context/VoteContext';
 import { useLayout } from '@/components/context/LayoutContext';
 import api from '@/components/services/api';
@@ -230,10 +232,11 @@ const VoteModal = ({ isOpen, onClose, nominee }: VoteModalProps) => {
                             {/* Nominee Info */}
                             <div className="flex flex-col items-center text-center mb-8">
                                 <div className="relative w-24 h-24 mb-4">
-                                    <img
+                                    <Image
                                         src={nominee.image}
                                         alt={nominee.name}
-                                        className="w-full h-full object-cover rounded-2xl shadow-xl"
+                                        fill
+                                        className="object-cover rounded-2xl shadow-xl"
                                     />
                                 </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
-import React from 'react';
+import * as React from 'react';
+import Image from 'next/image';
 
 interface SanzaTrophyProps {
     className?: string;
@@ -16,15 +17,12 @@ const SanzaTrophy = ({ className, size }: SanzaTrophyProps) => {
             className={`${className} flex items-center justify-center pointer-events-none overflow-visible`}
             style={containerStyle}
         >
-            <img
+            <Image
                 src="/sanza-trophy.png"
                 alt="Sanza Trophy"
-                className="w-full h-full object-contain"
-                style={{
-                    // If size is NOT provided, we assume the container (like a Tailwind w-40) handles scaling
-                    // If size IS provided (for icons), we use it.
-                    maxHeight: size ? 'none' : '100%'
-                }}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 33vw"
             />
         </div>
     );
