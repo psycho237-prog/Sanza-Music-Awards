@@ -23,7 +23,9 @@ import { useVotes } from '@/components/context/VoteContext';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import api from '@/components/services/api';
-import AdminTour from '@/components/AdminTour';
+import { useAdminTour } from '@/components/AdminTour';
+import AdminGuideBook from '@/components/AdminGuideBook';
+import { HelpCircle } from 'lucide-react';
 
 const AdminPage = () => {
     const { nominees, getTotalVotes, useBackend, categories } = useVotes();
@@ -40,7 +42,9 @@ const AdminPage = () => {
     const [topNominees, setTopNominees] = useState<any[]>([]);
     const [statusFilter, setStatusFilter] = useState('all');
 
-    // Check for existing token on mount
+    // Guide Book State
+    const [isGuideOpen, setIsGuideOpen] = useState(false);
+    const { startTour } = useAdminTour();
     useEffect(() => {
         const token = localStorage.getItem('adminToken');
         if (token) {
@@ -58,7 +62,16 @@ const AdminPage = () => {
             const result = await (api as any).verifyToken();
             if (result.valid) {
                 setIsAuthenticated(true);
+                setIsAuthenticated(true);
                 fetchDashboardData();
+
+                // Trigger tour if first time
+                if (!localStorage.getItem('hasSeenAdminTour')) {
+                    setTimeout(() => {
+                        startTour();
+                        localStorage.setItem('hasSeenAdminTour', 'true');
+                    }, 1000);
+                }
             } else {
                 localStorage.removeItem('adminToken');
             }
@@ -265,7 +278,14 @@ const AdminPage = () => {
                     >
                         Déconnexion
                     </Button>
-                    <AdminTour />
+                    <Button
+                        variant="ghost"
+                        className="text-xs font-bold uppercase tracking-widest flex items-center gap-2"
+                        onClick={() => setIsGuideOpen(true)}
+                    >
+                        <HelpCircle size={14} />
+                        Guide
+                    </Button>
                     <Link href="/">
                         <Button variant="ghost" className="text-xs font-bold uppercase tracking-widest">
                             Quitter
@@ -461,6 +481,7 @@ const AdminPage = () => {
                     </div>
                 </div>
             </div>
+            <AdminGuideBook isOpen={isGuideOpen} onClose={() => setIsGuideOpen(false)} />
         </div>
     );
 };

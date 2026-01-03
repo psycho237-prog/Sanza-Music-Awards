@@ -1,18 +1,17 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { driver } from 'driver.js';
 import "driver.js/dist/driver.css";
-import { HelpCircle } from 'lucide-react';
-import Button from './ui/Button';
 
-const AdminTour = () => {
+export const useAdminTour = () => {
     const [driverObj, setDriverObj] = useState<any>(null);
 
     useEffect(() => {
         const driverInstance = driver({
             showProgress: true,
             animate: true,
+            popoverClass: 'driverjs-theme',
             steps: [
                 {
                     element: '#admin-header',
@@ -77,22 +76,12 @@ const AdminTour = () => {
         setDriverObj(driverInstance);
     }, []);
 
-    const startTour = () => {
+    const startTour = useCallback(() => {
         if (driverObj) {
             driverObj.drive();
         }
-    };
+    }, [driverObj]);
 
-    return (
-        <Button
-            variant="ghost"
-            className="text-xs font-bold uppercase tracking-widest flex items-center gap-2"
-            onClick={startTour}
-        >
-            <HelpCircle size={14} />
-            Guide
-        </Button>
-    );
+    return { startTour };
 };
 
-export default AdminTour;
