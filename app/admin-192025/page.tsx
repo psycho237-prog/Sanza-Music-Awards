@@ -23,6 +23,7 @@ import { useVotes } from '@/components/context/VoteContext';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import api from '@/components/services/api';
+import AdminTour from '@/components/AdminTour';
 
 const AdminPage = () => {
     const { nominees, getTotalVotes, useBackend, categories } = useVotes();
@@ -236,7 +237,7 @@ const AdminPage = () => {
             </div>
             {/* Header */}
             <div className="p-6 pt-12 flex items-center justify-between border-b border-white/5 bg-black/40 backdrop-blur-xl sticky top-0 z-50">
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4" id="admin-header">
                     <div className="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center border border-secondary/30">
                         <LayoutDashboard className="text-secondary" size={20} />
                     </div>
@@ -264,6 +265,7 @@ const AdminPage = () => {
                     >
                         Déconnexion
                     </Button>
+                    <AdminTour />
                     <Link href="/">
                         <Button variant="ghost" className="text-xs font-bold uppercase tracking-widest">
                             Quitter
@@ -274,7 +276,7 @@ const AdminPage = () => {
 
             <div className="p-6 space-y-8 relative z-10 max-w-7xl mx-auto">
                 {/* Stats Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4" id="stats-grid">
                     <Card className="p-6 border-none bg-[#1a1a1a] rounded-[2rem] relative overflow-hidden group">
                         <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
                             <Activity size={100} />
@@ -315,7 +317,7 @@ const AdminPage = () => {
 
                 {/* Transaction Status Summary */}
                 {stats && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4" id="status-summary">
                         <div className="p-4 bg-green-500/10 rounded-2xl border border-green-500/20 flex items-center justify-between">
                             <div className="flex items-center gap-3">
                                 <CheckCircle className="text-green-500" size={20} />
@@ -341,7 +343,7 @@ const AdminPage = () => {
                 )}
 
                 {/* Real-time Monitoring */}
-                <div>
+                <div id="live-transactions">
                     <div className="flex items-center justify-between mb-6">
                         <h3 className="text-sm font-black tracking-tight flex items-center gap-2">
                             <Activity size={16} className="text-secondary" />
@@ -408,7 +410,7 @@ const AdminPage = () => {
 
                 {/* Top Nominees */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
+                    <div id="top-nominees">
                         <h3 className="text-sm font-black tracking-tight mb-6 flex items-center gap-2">
                             <SanzaTrophy size={16} />
                             Top Nommés
@@ -433,7 +435,7 @@ const AdminPage = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div id="categories-grid">
                         <h3 className="text-sm font-black tracking-tight mb-6 flex items-center gap-2">
                             <LayoutDashboard size={16} className="text-secondary" />
                             Gestion des Catégories ({categories.length})
