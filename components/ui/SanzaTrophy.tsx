@@ -9,12 +9,13 @@ interface SanzaTrophyProps {
 }
 
 const SanzaTrophy = ({ className, size }: SanzaTrophyProps) => {
-    // If size is provided, we treat it as a square-ish bounding box width
-    const containerStyle = size ? { width: size, height: 'auto' } : { width: '100%', height: '100%' };
+    // If size is provided, we treat it as a square-ish bounding box
+    const dimension = typeof size === 'number' ? `${size}px` : size;
+    const containerStyle = size ? { width: dimension, height: dimension } : { width: '100%', height: '100%' };
 
     return (
         <div
-            className={`${className} flex items-center justify-center pointer-events-none overflow-visible`}
+            className={`${className} relative flex flex-shrink-0 items-center justify-center pointer-events-none overflow-hidden`}
             style={containerStyle}
         >
             <Image
