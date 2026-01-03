@@ -96,7 +96,7 @@ const Landing = () => {
                         <motion.div
                             animate={{ y: [-8, 8, -8] }}
                             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                            className="h-[120px] xs:h-[150px] md:h-[220px] lg:h-[280px] flex-shrink-0"
+                            className="h-[120px] xs:h-[150px] md:h-[220px] lg:h-[280px] aspect-[0.45] relative flex-shrink-0"
                         >
                             <SanzaTrophy className="h-full w-auto drop-shadow-[0_0_40px_rgba(253,185,49,0.5)]" />
                         </motion.div>
