@@ -1,271 +1,722 @@
 {
-    "categories": {
-        "cat_01": {
-            "title": "Album of The Year",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": true
-        },
-        "cat_02": {
-            "title": "Song of The Year",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_03": {
-            "title": "Record of The Year",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": false
-        },
-        "cat_04": {
-            "title": "Best New Artist",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-artist.png",
-            "featured": false
-        },
-        "cat_05": {
-            "title": "Best Music Video",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-video.png",
-            "featured": false
-        },
-        "cat_06": {
-            "title": "Producer of The Year",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-artist.png",
-            "featured": false
-        },
-        "cat_07": {
-            "title": "Best Choregraphy in a Music Video",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-video.png",
-            "featured": false
-        },
-        "cat_08": {
-            "title": "Best Art Direction in a Music Video",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-video.png",
-            "featured": false
-        },
-        "cat_09": {
-            "title": "Best Visual Effects in a Music Video",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-video.png",
-            "featured": false
-        },
-        "cat_10": {
-            "title": "Best Rap Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_11": {
-            "title": "Best Rap Performance",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_12": {
-            "title": "Best Rap/Sung Collab",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_13": {
-            "title": "Best Rap Album/Ep",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": false
-        },
-        "cat_14": {
-            "title": "Best Afropop Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_15": {
-            "title": "Best Afropop Song by Duo or Group",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-artist.png",
-            "featured": false
-        },
-        "cat_16": {
-            "title": "Best Afropop Album/Ep",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": false
-        },
-        "cat_17": {
-            "title": "Best Bikutsi Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-traditional.png",
-            "featured": false
-        },
-        "cat_18": {
-            "title": "Best Bikutsi Song by Duo or Group",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-traditional.png",
-            "featured": false
-        },
-        "cat_19": {
-            "title": "Best Bikutsi Album/Ep",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": false
-        },
-        "cat_20": {
-            "title": "Best Mbole Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-traditional.png",
-            "featured": false
-        },
-        "cat_21": {
-            "title": "Best Mbole Song by Duo or Group",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-traditional.png",
-            "featured": false
-        },
-        "cat_22": {
-            "title": "Best Makossa Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-traditional.png",
-            "featured": false
-        },
-        "cat_23": {
-            "title": "Best Makossa Song by Duo or Group",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-traditional.png",
-            "featured": false
-        },
-        "cat_24": {
-            "title": "Best Makossa Album/Ep",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": false
-        },
-        "cat_25": {
-            "title": "Best Traditional Music Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-traditional.png",
-            "featured": false
-        },
-        "cat_26": {
-            "title": "Best Kpalum Music Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_27": {
-            "title": "Best Bendskin Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-traditional.png",
-            "featured": false
-        },
-        "cat_28": {
-            "title": "Best Gospel Music Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_29": {
-            "title": "Best Gospel Music Album/Ep",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": false
-        },
-        "cat_30": {
-            "title": "Best Contemporary Music Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_31": {
-            "title": "Best Contemporary Music Album/Ep",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": false
-        },
-        "cat_32": {
-            "title": "Best Soundtrack for Visual Media",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-video.png",
-            "featured": false
-        },
-        "cat_33": {
-            "title": "Best Music Film",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-video.png",
-            "featured": false
-        },
-        "cat_34": {
-            "title": "Best Album Cover",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-album.png",
-            "featured": false
-        },
-        "cat_35": {
-            "title": "Best Songwriter of The Year",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-artist.png",
-            "featured": false
-        },
-        "cat_36": {
-            "title": "Best Diaspora Artist",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-artist.png",
-            "featured": false
-        },
-        "cat_37": {
-            "title": "Best Reggae/Dance hall song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_38": {
-            "title": "Best Makune Song",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        },
-        "cat_39": {
-            "title": "Best Live Performance",
-            "nominees_count": "0 Nominees",
-            "image_url": "/images/categories/cat-song.png",
-            "featured": false
-        }
+  "categories": {
+    "cat_01": {
+      "featured": true,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "10 Nominees",
+      "title": "Album of The Year"
     },
-    "nominees": {
-        "nom_01": {
-            "category_id": "cat_01",
-            "name": "Artist 1",
-            "song": "Album Title 1",
-            "votes": 0,
-            "image_url": "/images/categories/cat-artist.png",
-            "tag": "Nominated",
-            "description": "Short description of the work.",
-            "genre": "Genre",
-            "country": "🇨🇲 Cameroon"
-        },
-        "nom_02": {
-            "category_id": "cat_01",
-            "name": "Artist 2",
-            "song": "Album Title 2",
-            "votes": 0,
-            "image_url": "/images/categories/cat-artist.png",
-            "tag": "Nominated",
-            "description": "Short description of the work.",
-            "genre": "Genre",
-            "country": "🇨🇲 Cameroon"
-        }
+    "cat_02": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "9 Nominees",
+      "title": "Song of The Year"
     },
-    "stats": {
-        "totalVotes": 0,
-        "totalRevenue": 0,
-        "totalTransactions": 0,
-        "successfulTransactions": 0,
-        "pendingTransactions": 0,
-        "failedTransactions": 0,
-        "successRate": 100
+    "cat_03": {
+      "featured": false,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "8 Nominees",
+      "title": "Record of The Year"
+    },
+    "cat_04": {
+      "featured": false,
+      "image_url": "/images/categories/cat-artist.png",
+      "nominees_count": "10 Nominees",
+      "title": "Best New Artist"
+    },
+    "cat_05": {
+      "featured": false,
+      "image_url": "/images/categories/cat-video.png",
+      "nominees_count": "6 Nominees",
+      "title": "Best Music Video"
+    },
+    "cat_06": {
+      "featured": false,
+      "image_url": "/images/categories/cat-artist.png",
+      "nominees_count": "0 Nominees",
+      "title": "Producer of The Year"
+    },
+    "cat_07": {
+      "featured": false,
+      "image_url": "/images/categories/cat-video.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Choregraphy in a Music Video"
+    },
+    "cat_08": {
+      "featured": false,
+      "image_url": "/images/categories/cat-video.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Art Direction in a Music Video"
+    },
+    "cat_09": {
+      "featured": false,
+      "image_url": "/images/categories/cat-video.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Visual Effects in a Music Video"
+    },
+    "cat_10": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Rap Song"
+    },
+    "cat_11": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Rap Performance"
+    },
+    "cat_12": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Rap/Sung Collab"
+    },
+    "cat_13": {
+      "featured": false,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Rap Album/Ep"
+    },
+    "cat_14": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Afropop Song"
+    },
+    "cat_15": {
+      "featured": false,
+      "image_url": "/images/categories/cat-artist.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Afropop Song by Duo or Group"
+    },
+    "cat_16": {
+      "featured": false,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Afropop Album/Ep"
+    },
+    "cat_17": {
+      "featured": false,
+      "image_url": "/images/categories/cat-traditional.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Bikutsi Song"
+    },
+    "cat_18": {
+      "featured": false,
+      "image_url": "/images/categories/cat-traditional.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Bikutsi Song by Duo or Group"
+    },
+    "cat_19": {
+      "featured": false,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Bikutsi Album/Ep"
+    },
+    "cat_20": {
+      "featured": false,
+      "image_url": "/images/categories/cat-traditional.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Mbole Song"
+    },
+    "cat_21": {
+      "featured": false,
+      "image_url": "/images/categories/cat-traditional.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Mbole Song by Duo or Group"
+    },
+    "cat_22": {
+      "featured": false,
+      "image_url": "/images/categories/cat-traditional.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Makossa Song"
+    },
+    "cat_23": {
+      "featured": false,
+      "image_url": "/images/categories/cat-traditional.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Makossa Song by Duo or Group"
+    },
+    "cat_24": {
+      "featured": false,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Makossa Album/Ep"
+    },
+    "cat_25": {
+      "featured": false,
+      "image_url": "/images/categories/cat-traditional.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Traditional Music Song"
+    },
+    "cat_26": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Kpalum Music Song"
+    },
+    "cat_27": {
+      "featured": false,
+      "image_url": "/images/categories/cat-traditional.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Bendskin Song"
+    },
+    "cat_28": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Gospel Music Song"
+    },
+    "cat_29": {
+      "featured": false,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Gospel Music Album/Ep"
+    },
+    "cat_30": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Contemporary Music Song"
+    },
+    "cat_31": {
+      "featured": false,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Contemporary Music Album/Ep"
+    },
+    "cat_32": {
+      "featured": false,
+      "image_url": "/images/categories/cat-video.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Soundtrack for Visual Media"
+    },
+    "cat_33": {
+      "featured": false,
+      "image_url": "/images/categories/cat-video.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Music Film"
+    },
+    "cat_34": {
+      "featured": false,
+      "image_url": "/images/categories/cat-album.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Album Cover"
+    },
+    "cat_35": {
+      "featured": false,
+      "image_url": "/images/categories/cat-artist.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Songwriter of The Year"
+    },
+    "cat_36": {
+      "featured": false,
+      "image_url": "/images/categories/cat-artist.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Diaspora Artist"
+    },
+    "cat_37": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Reggae/Dance hall song"
+    },
+    "cat_38": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Makune Song"
+    },
+    "cat_39": {
+      "featured": false,
+      "image_url": "/images/categories/cat-song.png",
+      "nominees_count": "0 Nominees",
+      "title": "Best Live Performance"
     }
+  },
+  "nominees": {
+    "nom_01": {
+      "category_id": "cat_05",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best Music Video/Ennemies Adah Akenji.jpg",
+      "name": "Ennemies Adah Akenji",
+      "song": "Ennemies Adah Akenji",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_02": {
+      "category_id": "cat_05",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best Music Video/Hebi H'arts stories.jpg",
+      "name": "Hebi H'arts stories",
+      "song": "Hebi H'arts stories",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_03": {
+      "category_id": "cat_05",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best Music Video/Koulos Adah Akenji.jpg",
+      "name": "Koulos Adah Akenji",
+      "song": "Koulos Adah Akenji",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_04": {
+      "category_id": "cat_05",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best Music Video/Le Temps Adah Akenji.jpg",
+      "name": "Le Temps Adah Akenji",
+      "song": "Le Temps Adah Akenji",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_05": {
+      "category_id": "cat_05",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best Music Video/Stranger Bushboy Films.jpg",
+      "name": "Stranger Bushboy Films",
+      "song": "Stranger Bushboy Films",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_06": {
+      "category_id": "cat_05",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best Music Video/Un peu un peu Ndukong.jpg",
+      "name": "Un peu un peu Ndukong",
+      "song": "Un peu un peu Ndukong",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_07": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Abbo Bayero.jpg",
+      "name": "Abbo Bayero",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_08": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Beri Boys Club.jpg",
+      "name": "Beri Boys Club",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_09": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Brayan M.jpg",
+      "name": "Brayan M",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_10": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Cabaraiz.jpg",
+      "name": "Cabaraiz",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_11": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Dice OMG.jpg",
+      "name": "Dice OMG",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_12": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Ebanga.jpg",
+      "name": "Ebanga",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_13": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Genie Solo.jpg",
+      "name": "Genie Solo",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_14": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/King Luca.jpg",
+      "name": "King Luca",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_15": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Vidin.jpg",
+      "name": "Vidin",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_16": {
+      "category_id": "cat_04",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Best New Artist/Wizdom Og.jpg",
+      "name": "Wizdom Og",
+      "song": "",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_17": {
+      "category_id": "cat_03",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Record of The Year/Hala Madrid Kem's On The Beatz.jpg",
+      "name": "Hala Madrid Kem's On The Beatz",
+      "song": "Hala Madrid Kem's On The Beatz",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_18": {
+      "category_id": "cat_03",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Record of The Year/Je veux danser Kash Maker.jpg",
+      "name": "Je veux danser Kash Maker",
+      "song": "Je veux danser Kash Maker",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_19": {
+      "category_id": "cat_03",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Record of The Year/La Vie du Poulet SMJ Abega.jpg",
+      "name": "La Vie du Poulet SMJ Abega",
+      "song": "La Vie du Poulet SMJ Abega",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_20": {
+      "category_id": "cat_03",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Record of The Year/Leve-tio LB on the Crack ft Daniel wifi.jpg",
+      "name": "Leve-tio LB on the Crack ft Daniel wifi",
+      "song": "Leve-tio LB on the Crack ft Daniel wifi",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_21": {
+      "category_id": "cat_03",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Record of The Year/Lo Gout Tchakap by Zeus.jpg",
+      "name": "Lo Gout Tchakap by Zeus",
+      "song": "Lo Gout Tchakap by Zeus",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_22": {
+      "category_id": "cat_03",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Record of The Year/On fonctionne Ludovic Tchouate.jpg",
+      "name": "On fonctionne Ludovic Tchouate",
+      "song": "On fonctionne Ludovic Tchouate",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_23": {
+      "category_id": "cat_03",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Record of The Year/Stranger Smash Laser.jpg",
+      "name": "Stranger Smash Laser",
+      "song": "Stranger Smash Laser",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_24": {
+      "category_id": "cat_03",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Record of The Year/Tu le seras Fento Solo.jpg",
+      "name": "Tu le seras Fento Solo",
+      "song": "Tu le seras Fento Solo",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_25": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/Fragile King Luca.jpg",
+      "name": "Fragile King Luca",
+      "song": "Fragile King Luca",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_26": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/Hala Madrid Bad Nova.jpg",
+      "name": "Hala Madrid Bad Nova",
+      "song": "Hala Madrid Bad Nova",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_27": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/Je veux danser Lady Ponce.jpg",
+      "name": "Je veux danser Lady Ponce",
+      "song": "Je veux danser Lady Ponce",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_28": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/Koulos Cysoul.jpg",
+      "name": "Koulos Cysoul",
+      "song": "Koulos Cysoul",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_29": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/La Vie du Poulet La Chacala ft Yendel.jpg",
+      "name": "La Vie du Poulet La Chacala ft Yendel",
+      "song": "La Vie du Poulet La Chacala ft Yendel",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_30": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/Lo Gout Tchakala VIP.jpg",
+      "name": "Lo Gout Tchakala VIP",
+      "song": "Lo Gout Tchakala VIP",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_31": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/On fonctionne Beri Boys Club.jpg",
+      "name": "On fonctionne Beri Boys Club",
+      "song": "On fonctionne Beri Boys Club",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_32": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/Stranger Kocee ft KS Bloom.jpg",
+      "name": "Stranger Kocee ft KS Bloom",
+      "song": "Stranger Kocee ft KS Bloom",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_33": {
+      "category_id": "cat_02",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/Song of The Year/Tu le sera Blacky Star.jpg",
+      "name": "Tu le sera Blacky Star",
+      "song": "Tu le sera Blacky Star",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_34": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/Coeur de Lion Mr Leo.jpg",
+      "name": "Coeur de Lion Mr Leo",
+      "song": "Coeur de Lion Mr Leo",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_35": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/Deluxe Vol 1 Beri Boys Club.jpg",
+      "name": "Deluxe Vol 1 Beri Boys Club",
+      "song": "Deluxe Vol 1 Beri Boys Club",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_36": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/Ecouralors Lucky+2.jpg",
+      "name": "Ecouralors Lucky+2",
+      "song": "Ecouralors Lucky+2",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_37": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/Empreinte krys M.jpg",
+      "name": "Empreinte krys M",
+      "song": "Empreinte krys M",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_38": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/Entracte Cysoul.jpg",
+      "name": "Entracte Cysoul",
+      "song": "Entracte Cysoul",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_39": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/Holiday season Dice OMG.jpg",
+      "name": "Holiday season Dice OMG",
+      "song": "Holiday season Dice OMG",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_40": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/Le Saint Graal Nguebo.jpg",
+      "name": "Le Saint Graal Nguebo",
+      "song": "Le Saint Graal Nguebo",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_41": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/The Soundman Phillbill.jpg",
+      "name": "The Soundman Phillbill",
+      "song": "The Soundman Phillbill",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_42": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/legende lady ponce.jpg",
+      "name": "legende lady ponce",
+      "song": "legende lady ponce",
+      "tag": "Nominated",
+      "votes": 0
+    },
+    "nom_43": {
+      "category_id": "cat_01",
+      "country": "🇨🇲 Cameroon",
+      "description": "Nominee description",
+      "genre": "TBA",
+      "image_url": "/images/nominees/album of the year/purple Love Locko.jpg",
+      "name": "purple Love Locko",
+      "song": "purple Love Locko",
+      "tag": "Nominated",
+      "votes": 0
+    }
+  },
+  "stats": {
+    "failedTransactions": 0,
+    "pendingTransactions": 0,
+    "successRate": 100,
+    "successfulTransactions": 0,
+    "totalRevenue": 0,
+    "totalTransactions": 0,
+    "totalVotes": 0
+  }
 }

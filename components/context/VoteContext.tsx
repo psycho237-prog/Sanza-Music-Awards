@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import api from '@/components/services/api';
+import { mockData } from '@/lib/database';
 
 interface Nominee {
     id: string | number;
@@ -111,10 +112,37 @@ export const VoteProvider = ({ children }: { children: ReactNode }) => {
             console.log('✅ Connected to backend API');
         } catch (err: any) {
             console.error('❌ Backend request failed:', err.message);
-            setError('Failed to load data from server. Please try again later.');
+            setError('Failed to load data from server. Using local data instead.');
             setUseBackend(false);
-            setCategories([]);
-            setNominees([]);
+
+            // Fallback to mockData
+            const transformNominees = (data: any[]): Nominee[] => data.map(n => ({
+                id: n.id,
+                categoryId: n.category_id,
+                name: n.name,
+                song: n.song,
+                votes: n.votes_display || n.votes?.toString() || '0',
+                image: n.image_url,
+                tag: n.tag,
+                description: n.description,
+                bio: n.bio,
+                genre: n.genre,
+                country: n.country,
+                rank: n.rank,
+                listeners: n.listeners,
+                hits: n.hits || [],
+            }));
+
+            const transformedCategories = mockData.categories.map((c: any): Category => ({
+                id: c.id,
+                title: c.title,
+                nominees: c.nominees_count,
+                image: c.image_url,
+                featured: c.featured,
+            }));
+
+            setCategories(transformedCategories);
+            setNominees(transformNominees(mockData.nominees));
         } finally {
             setIsLoading(false);
         }
